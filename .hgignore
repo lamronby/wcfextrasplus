@@ -1,0 +1,27 @@
+glob:*.o
+glob:*.lo
+glob:*.la
+glob:*.al
+glob:.libs
+glob:*.so
+glob:*.so.[0-9]*
+glob:*.a
+glob:*.pyc
+glob:*.pyo
+glob:*.rej
+glob:*~ #*#
+glob:.#*
+glob:.*.swp
+glob:.DS_Store
+glob:*.cache
+glob:*.slnfilter
+glob:TestResults
+glob:bin
+glob:obj
+glob:Debug
+glob:Release
+glob:*.user
+glob:*.aps
+glob:*.eto
+glob:*.vssscc
+glob:*.vspscc

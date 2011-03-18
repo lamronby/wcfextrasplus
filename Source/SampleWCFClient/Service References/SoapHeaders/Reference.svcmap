@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="538cd0d1-b7bc-4078-a315-cdb9e4ba6061" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/Sample/SoapHeadersSample.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SoapHeadersSample.xsd" MetadataType="Schema" ID="9ac35f9d-d552-4e3a-bfeb-43fbb85aaab9" SourceId="1" SourceUrl="http://127.0.0.1/Sample/SoapHeadersSample.svc?xsd=xsd0" />
+    <MetadataFile FileName="SoapHeadersSample1.xsd" MetadataType="Schema" ID="6dbe13b8-8c15-4c8b-9ce4-d09ec348ca66" SourceId="1" SourceUrl="http://127.0.0.1/Sample/SoapHeadersSample.svc?xsd=xsd1" />
+    <MetadataFile FileName="SoapHeadersSample.wsdl" MetadataType="Wsdl" ID="762b33cb-0a78-4b94-a3cf-c443cd019546" SourceId="1" SourceUrl="http://localhost/Sample/SoapHeadersSample.svc?wsdl" />
+    <MetadataFile FileName="SoapHeadersSample1.wsdl" MetadataType="Wsdl" ID="b19ecadf-2b8c-469d-b6a1-9b84f372b003" SourceId="1" SourceUrl="http://127.0.0.1/Sample/SoapHeadersSample.svc?wsdl=wsdl0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

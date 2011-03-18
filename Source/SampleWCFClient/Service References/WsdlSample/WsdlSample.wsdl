@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:tns="http://tempuri.org/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="WsdlSample" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <xsd:element name="Operation1">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Operation1Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Operation1Result" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Operation2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/Sample" minOccurs="0" name="data" nillable="true" type="q1:DataContractSample" />
+            <xsd:element xmlns:q2="http://schemas.datacontract.org/2004/07/Sample" minOccurs="0" name="innerData" nillable="true" type="q2:DataContractSample.DataContractSampleInner" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Operation2Response">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Operation3">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q3="http://schemas.datacontract.org/2004/07/Sample" minOccurs="0" name="str" nillable="true" type="q3:Struct" />
+            <xsd:element minOccurs="0" name="param2" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Operation3Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Operation3Result" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="0" name="param1" type="xsd:int" />
+            <xsd:element minOccurs="0" name="param2" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Operation4">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element xmlns:q4="http://schemas.datacontract.org/2004/07/Sample" minOccurs="0" name="param1" type="q4:RegularEnum" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Operation4Response">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xsd:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Sample" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Sample">
+      <xsd:complexType name="DataContractSample">
+        <xsd:annotation>
+          <xsd:appinfo />
+          <xsd:documentation>&lt;summary&gt;
+            A basic class marked with [DataContract]
+            &lt;/summary&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ErrorCodeField" type="tns:ErrorCodes">
+            <xsd:annotation>
+              <xsd:appinfo />
+              <xsd:documentation>&lt;summary&gt;
+            An enum Field (Not a property)
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ExtensionData" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo />
+              <xsd:documentation>&lt;summary&gt;
+            A memeber with a name that collides with the ExtensionData member 
+            inherited from IExtensibleDataObject
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Member1" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo />
+              <xsd:documentation>&lt;summary&gt;
+            A simple string member
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="_x0040_WeirdName" type="xsd:int">
+            <xsd:annotation>
+              <xsd:appinfo />
+              <xsd:documentation>&lt;summary&gt;
+            A member who's name was changed using the DataMember attribute.
+            Also note that the new member name has special chars.
+            This summary references &lt;see cref="P:Member1"&gt;Member1&lt;/see&gt;
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DataContractSample" nillable="true" type="tns:DataContractSample" />
+      <xsd:simpleType name="ErrorCodes">
+        <xsd:annotation>
+          <xsd:appinfo />
+          <xsd:documentation>&lt;summary&gt;
+            An enum marked with a DataContract attribute
+            &lt;/summary&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="General">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+              </xsd:appinfo>
+              <xsd:documentation>&lt;summary&gt;
+            Unknown error has occoured
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="@FileNotFound">
+            <xsd:annotation>
+              <xsd:documentation>&lt;summary&gt;
+            An enum member who's name was changed using the EnumMember attribute.
+            Also note that the new member name has special chars.
+            &lt;/summary&gt;
+            &lt;seealso cref="M:IWsdlSample.Operation2()" /&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="OutOfMemory">
+            <xsd:annotation>
+              <xsd:documentation>&lt;summary&gt;
+            Out of memory see &lt;see cref="M:IWsdlSample.Operation1" /&gt; for more details
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="ErrorCodes" nillable="true" type="tns:ErrorCodes" />
+      <xsd:complexType name="DataContractSample.DataContractSampleInner">
+        <xsd:annotation>
+          <xsd:appinfo />
+          <xsd:documentation>&lt;summary&gt;
+            An class declared as an inner 
+            &lt;/summary&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Member1" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo />
+              <xsd:documentation>&lt;summary&gt;
+            A member field of an inner class
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Member2" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo />
+              <xsd:documentation>&lt;summary&gt;
+            This summary references &lt;see cref="P:Member1"&gt;Member1&lt;/see&gt;
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="DataContractSample.DataContractSampleInner" nillable="true" type="tns:DataContractSample.DataContractSampleInner" />
+      <xsd:complexType name="Struct">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+          </xsd:appinfo>
+          <xsd:documentation>&lt;summary&gt;
+            Structs can also be documented
+            &lt;/summary&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="str" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo />
+              <xsd:documentation>&lt;summary&gt;
+            And members of structs
+            &lt;/summary&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Struct" nillable="true" type="tns:Struct" />
+      <xsd:simpleType name="RegularEnum">
+        <xsd:annotation>
+          <xsd:appinfo />
+          <xsd:documentation>&lt;summary&gt;
+            This is a "regular" enum without a DataContract attribute.
+            &lt;/summary&gt;</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="FirstValue">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xsd:appinfo>
+              <xsd:documentation>&lt;summary&gt;
+            First value documentation
+            &lt;/summary&gt;
+            see &lt;see cref="T:ErrorCodes" /&gt; and &lt;see cref="F:ErrorCodes.FileNotFound" /&gt;</xsd:documentation>
+            </xsd:annotation>
+          </xsd:enumeration>
+          <xsd:enumeration value="SecondValue">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:enumeration>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="RegularEnum" nillable="true" type="tns:RegularEnum" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWsdlSample_Operation1_InputMessage">
+    <wsdl:part name="parameters" element="tns:Operation1" />
+  </wsdl:message>
+  <wsdl:message name="IWsdlSample_Operation1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Operation1Response" />
+  </wsdl:message>
+  <wsdl:message name="IWsdlSample_Operation2_InputMessage">
+    <wsdl:part name="parameters" element="tns:Operation2" />
+  </wsdl:message>
+  <wsdl:message name="IWsdlSample_Operation2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Operation2Response" />
+  </wsdl:message>
+  <wsdl:message name="IWsdlSample_Operation3_InputMessage">
+    <wsdl:part name="parameters" element="tns:Operation3" />
+  </wsdl:message>
+  <wsdl:message name="IWsdlSample_Operation3_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Operation3Response" />
+  </wsdl:message>
+  <wsdl:message name="IWsdlSample_Operation4_InputMessage">
+    <wsdl:part name="parameters" element="tns:Operation4" />
+  </wsdl:message>
+  <wsdl:message name="IWsdlSample_Operation4_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Operation4Response" />
+  </wsdl:message>
+  <wsdl:portType name="IWsdlSample">
+    <wsdl:documentation>&lt;summary&gt;
+            This is a sample service contract that demonstrates how xml comments
+            can be placed anywhere in code are rendered to the result WSDL.
+            These comments will also be imported to the client generated proxy if the proxy configured correctly
+            &lt;/summary&gt;</wsdl:documentation>
+    <wsdl:operation name="Operation1">
+      <wsdl:documentation>&lt;summary&gt;
+            This is a simple operation without input paramaters.
+            &lt;/summary&gt;
+            &lt;returns&gt;The operations returns a string&lt;/returns&gt;
+            &lt;seealso cref="!:Unresolved.Reference" /&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IWsdlSample/Operation1" message="tns:IWsdlSample_Operation1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWsdlSample/Operation1Response" message="tns:IWsdlSample_Operation1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Operation2">
+      <wsdl:documentation>&lt;summary&gt;
+            Receives 2 parameters, both are data contracts
+            &lt;/summary&gt;
+            &lt;param name="data"&gt;Regular DataContract parameter&lt;/param&gt;
+            &lt;param name="innerData"&gt;This parameter is from a type declared as an inner class inside a DataContract&lt;/param&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IWsdlSample/Operation2" message="tns:IWsdlSample_Operation2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWsdlSample/Operation2Response" message="tns:IWsdlSample_Operation2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Operation3">
+      <wsdl:documentation>This text is placed outside of any tag. It will not be rendered when using the Portable format
+            &lt;summary&gt;
+            Operation 3 - This is a &lt;b&gt;test&lt;/b&gt; for very long xml comments. The rest of this line is just garbage: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec magna odio, imperdiet in, facilisis vitae, congue vel, urna. Aliquam ullamcorper. Integer libero turpis, tempor quis, interdum ac, interdum sed, lorem. Nam ipsum erat, interdum sed, pellentesque sed, faucibus sed, risus. In commodo ipsum eget neque. Suspendisse ut nisl sit amet odio semper luctus. Maecenas sit amet nisl. Sed ac ligula eu nunc lacinia pulvinar. Phasellus auctor aliquam diam. Curabitur at nibh id felis mattis ornare. Quisque ac purus non odio aliquet condimentum. Curabitur gravida nisi a odio. In iaculis pede vitae dui. Nunc a mi. Curabitur elementum ligula in odio. Nunc accumsan egestas odio
+            &lt;/summary&gt;
+            &lt;remarks&gt;
+                This is a section of remarks. 
+            This information will go into the HTML documentation 
+            Remarks are not rendered when using Portable
+            &lt;/remarks&gt;
+            seealso references are not renderd when using Portable
+            &lt;param name="str"&gt;a Nullable parameter&lt;/param&gt;
+            &lt;param name="param1"&gt;this is
+            a 
+            multiline 
+            commnet
+            for param2&lt;/param&gt;
+            &lt;param name="param2"&gt;a parameter passed by reference&lt;/param&gt;
+            &lt;returns&gt;this method returns a string&lt;/returns&gt;
+            &lt;custom&gt;This is a custom XML comment tag&lt;/custom&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IWsdlSample/Operation3" message="tns:IWsdlSample_Operation3_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWsdlSample/Operation3Response" message="tns:IWsdlSample_Operation3_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Operation4">
+      <wsdl:documentation>&lt;summary&gt;
+            This operation uses an enum as a parameter.
+            &lt;/summary&gt;
+            &lt;param name="param1"&gt;A "regular" enum. This is an enum not marked with the [DataContract] attribure&lt;/param&gt;
+            &lt;seealso cref="M:Operation3()" /&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://tempuri.org/IWsdlSample/Operation4" message="tns:IWsdlSample_Operation4_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWsdlSample/Operation4Response" message="tns:IWsdlSample_Operation4_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWsdlSample" type="tns:IWsdlSample">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Operation1">
+      <soap:operation soapAction="http://tempuri.org/IWsdlSample/Operation1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Operation2">
+      <soap:operation soapAction="http://tempuri.org/IWsdlSample/Operation2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Operation3">
+      <soap:operation soapAction="http://tempuri.org/IWsdlSample/Operation3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Operation4">
+      <soap:operation soapAction="http://tempuri.org/IWsdlSample/Operation4" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsdlSample">
+    <wsdl:port name="BasicHttpBinding_IWsdlSample" binding="tns:BasicHttpBinding_IWsdlSample">
+      <soap:address location="http://127.0.0.1/Sample/WsdlSample.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

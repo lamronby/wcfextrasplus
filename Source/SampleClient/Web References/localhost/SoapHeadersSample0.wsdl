@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:tns="http://WCFExtras/Samples" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" targetNamespace="http://WCFExtras/Samples" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://WCFExtras/Samples/Imports">
+      <xsd:import schemaLocation="http://srv1/Sample/SoapHeadersSample.svc?xsd=xsd0" namespace="http://WCFExtras/Samples" />
+      <xsd:import schemaLocation="http://srv1/Sample/SoapHeadersSample.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISoapHeadersSample_In_InputMessage">
+    <wsdl:part name="parameters" element="tns:In" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_In_InputMessage_Headers">
+    <wsdl:part name="MyHeader" element="tns:MyHeader" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_In_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_Out_InputMessage">
+    <wsdl:part name="parameters" element="tns:Out" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_Out_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_Out_OutputMessage_Headers">
+    <wsdl:part name="MyHeader" element="tns:MyHeader" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_InOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:InOut" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_InOut_InputMessage_Headers">
+    <wsdl:part name="MyHeader" element="tns:MyHeader" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_InOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISoapHeadersSample_InOut_OutputMessage_Headers">
+    <wsdl:part name="MyHeader" element="tns:MyHeader" />
+  </wsdl:message>
+  <wsdl:portType name="ISoapHeadersSample">
+    <wsdl:operation name="In">
+      <wsdl:input wsaw:Action="http://WCFExtras/Samples/ISoapHeadersSample/In" message="tns:ISoapHeadersSample_In_InputMessage" />
+      <wsdl:output wsaw:Action="http://WCFExtras/Samples/ISoapHeadersSample/InResponse" message="tns:ISoapHeadersSample_In_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Out">
+      <wsdl:input wsaw:Action="http://WCFExtras/Samples/ISoapHeadersSample/Out" message="tns:ISoapHeadersSample_Out_InputMessage" />
+      <wsdl:output wsaw:Action="http://WCFExtras/Samples/ISoapHeadersSample/OutResponse" message="tns:ISoapHeadersSample_Out_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InOut">
+      <wsdl:input wsaw:Action="http://WCFExtras/Samples/ISoapHeadersSample/InOut" message="tns:ISoapHeadersSample_InOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://WCFExtras/Samples/ISoapHeadersSample/InOutResponse" message="tns:ISoapHeadersSample_InOut_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
