@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel.Configuration;
 using System.Configuration;
-using WCFExtras.Utils;
 
-namespace WCFExtras.Wsdl
+namespace WCFExtrasPlus.Wsdl
 {
     class WsdlExtensionsConfig : BehaviorExtensionElement
     {

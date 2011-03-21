@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Configuration;
-using WCFExtras.Utils;
 using System.IO;
 
-namespace WCFExtras.Wsdl.Documentation
+namespace WCFExtrasPlus.Wsdl.Documentation
 {
     class XmlCommentsConfig : ConfigurationSection
     {

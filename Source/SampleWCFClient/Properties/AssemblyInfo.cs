@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SampleWCFClient")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Clarizen")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SampleWCFClient")]
-[assembly: AssemblyCopyright("Copyright © Clarizen 2008")]
+[assembly: AssemblyCopyright("Copyright ©  2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

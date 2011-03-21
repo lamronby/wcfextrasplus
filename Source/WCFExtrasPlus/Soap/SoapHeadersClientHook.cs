@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel.Dispatcher;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
-using System.Reflection;
 using System.Collections;
 
-namespace WCFExtras.Soap
+namespace WCFExtrasPlus.Soap
 {
     class SoapHeadersClientHook : IClientMessageInspector, IChannelInitializer,
         IExtension<IContextChannel>

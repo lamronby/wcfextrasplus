@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WCFExtras")]
+[assembly: AssemblyTitle("WCFExtrasPlus")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Eyal Post")]
-[assembly: AssemblyProduct("WCFExtras")]
-[assembly: AssemblyCopyright("Copyright © 2008 Eyal Post")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("WCFExtrasPlus")]
+[assembly: AssemblyCopyright("Copyright © 2008 Eyal Post, © 2011 Chris Jansen")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

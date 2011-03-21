@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
 using System.Xml;
 using System.Reflection;
-using WCFExtras.Utils;
 using System.Runtime.Serialization;
 using System.Xml.Schema;
+using WCFExtrasPlus.Utils;
 
-namespace WCFExtras.Wsdl.Documentation
+namespace WCFExtrasPlus.Wsdl.Documentation
 {
     class XmlCommentsExporter
     {

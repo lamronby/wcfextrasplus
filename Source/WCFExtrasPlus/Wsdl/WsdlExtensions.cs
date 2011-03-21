@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel.Description;
+using WCFExtrasPlus.Wsdl.Documentation;
 
-using WCFExtras.Wsdl.Documentation;
-using WCFExtras.Utils;
-
-namespace WCFExtras.Wsdl
+namespace WCFExtrasPlus.Wsdl
 {
     public class WsdlExtensions : IEndpointBehavior, IWsdlExportExtension
     {

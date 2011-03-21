@@ -6,9 +6,9 @@ using System.Xml;
 using System.Reflection;
 using System.IO;
 using System.Text.RegularExpressions;
-using WCFExtras.Wsdl.Documentation;
+using WCFExtrasPlus.Wsdl.Documentation;
 
-namespace WCFExtras.Utils
+namespace WCFExtrasPlus.Utils
 {
     /// <summary>
     /// allows customizing a comment

@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel.Description;
-using System.ServiceModel.Dispatcher;
-using System.ServiceModel.Channels;
-using System.ServiceModel;
-using System.CodeDom;
-using WCFExtras.Utils;
 
-namespace WCFExtras.Soap
+namespace WCFExtrasPlus.Soap
 {
     [AttributeUsage(AttributeTargets.Interface)]
     public class SoapHeadersAttribute : Attribute, IContractBehavior, IWsdlExportExtension

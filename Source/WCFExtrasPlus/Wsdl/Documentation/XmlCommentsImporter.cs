@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
 using System.CodeDom;
-using WCFExtras.Utils;
-using System.Runtime.Serialization;
 using System.Xml.Schema;
-using ServiceDescription = System.Web.Services.Description.ServiceDescription;
-using System.Xml;
 using System.Configuration;
-using System.IO;
+using WCFExtrasPlus.Utils;
 
-namespace WCFExtras.Wsdl.Documentation
+namespace WCFExtrasPlus.Wsdl.Documentation
 {
     public class XmlCommentsImporter : IServiceBehavior, IWsdlImportExtension
     {

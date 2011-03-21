@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using WCFExtrasPlus.Soap;
+
 namespace SampleWCFClient.SoapHeaders {
     using System.Runtime.Serialization;
     using System;
@@ -60,22 +62,22 @@ namespace SampleWCFClient.SoapHeaders {
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://WCFExtras/Samples", ConfigurationName="SoapHeaders.ISoapHeadersSample")]
-    [WCFExtras.Soap.SoapHeadersAttribute()]
+    [SoapHeaders()]
     public interface ISoapHeadersSample {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtras/Samples/ISoapHeadersSample/NoHeaders", ReplyAction="http://WCFExtras/Samples/ISoapHeadersSample/NoHeadersResponse")]
         void NoHeaders();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtras/Samples/ISoapHeadersSample/In", ReplyAction="http://WCFExtras/Samples/ISoapHeadersSample/InResponse")]
-        [WCFExtras.Soap.SoapHeaderAttribute("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=WCFExtras.Soap.SoapHeaderDirection.In)]
+        [SoapHeader("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=SoapHeaderDirection.In)]
         string In();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtras/Samples/ISoapHeadersSample/Out", ReplyAction="http://WCFExtras/Samples/ISoapHeadersSample/OutResponse")]
-        [WCFExtras.Soap.SoapHeaderAttribute("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=WCFExtras.Soap.SoapHeaderDirection.Out)]
+        [SoapHeader("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=SoapHeaderDirection.Out)]
         void Out(string value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtras/Samples/ISoapHeadersSample/InOut", ReplyAction="http://WCFExtras/Samples/ISoapHeadersSample/InOutResponse")]
-        [WCFExtras.Soap.SoapHeaderAttribute("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=WCFExtras.Soap.SoapHeaderDirection.InOut)]
+        [SoapHeader("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=SoapHeaderDirection.InOut)]
         void InOut();
     }
     

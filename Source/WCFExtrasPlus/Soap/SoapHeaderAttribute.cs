@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ServiceModel.Description;
 
-namespace WCFExtras.Soap
+namespace WCFExtrasPlus.Soap
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class SoapHeaderAttribute : Attribute

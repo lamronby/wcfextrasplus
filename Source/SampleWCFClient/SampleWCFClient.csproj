@@ -12,10 +12,14 @@
     <AssemblyName>SampleWCFClient</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -98,17 +102,17 @@
     <None Include="Service References\WsdlSample\WsdlSample.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WCFExtras\WCFExtras.csproj">
-      <Project>{22037EAC-02C0-4A99-8A4F-8172590E64ED}</Project>
-      <Name>WCFExtras</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\WsdlSample\configuration.svcinfo" />
     <None Include="Service References\WsdlSample\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WCFExtrasPlus\WCFExtrasPlus.csproj">
+      <Project>{22037EAC-02C0-4A99-8A4F-8172590E64ED}</Project>
+      <Name>WCFExtrasPlus</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

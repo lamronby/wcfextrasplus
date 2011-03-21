@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web.Services.Description;
 using System.Xml.Schema;
 using System.Xml;
 
-namespace WCFExtras.Utils
+namespace WCFExtrasPlus.Utils
 {
     static class WsdlUtils
     {

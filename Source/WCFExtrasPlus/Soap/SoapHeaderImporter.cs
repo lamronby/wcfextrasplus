@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
 using System.Xml.Schema;
 using System.Xml;
 using System.CodeDom;
-using WCFExtras.Soap;
-using WCFExtras.Utils;
+using WCFExtrasPlus.Utils;
 
-namespace WCFExtras.Soap
+namespace WCFExtrasPlus.Soap
 {
     public class SoapHeaderImporter : IWsdlImportExtension
     {

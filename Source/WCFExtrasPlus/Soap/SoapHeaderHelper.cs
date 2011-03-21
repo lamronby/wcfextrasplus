@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Runtime.Serialization;
 using System.Reflection;
-using WCFExtras.Utils;
+using WCFExtrasPlus.Utils;
 
-namespace WCFExtras.Soap
+namespace WCFExtrasPlus.Soap
 {
     public class SoapHeaderHelper
     {

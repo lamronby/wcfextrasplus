@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WCFExtras.Soap;
-using SampleWCFClient.WsdlSample;
 using SampleWCFClient.SoapHeaders;
+using WCFExtrasPlus.Soap;
 
 namespace SampleWCFClient
 {

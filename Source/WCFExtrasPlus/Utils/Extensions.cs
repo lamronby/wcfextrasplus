@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ServiceModel.Description;
+﻿using System.ServiceModel.Description;
 
-namespace WCFExtras.Utils
+namespace WCFExtrasPlus.Utils
 {
     static class Extensions
     {

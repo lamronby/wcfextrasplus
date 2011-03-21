@@ -25,3 +25,5 @@ glob:*.aps
 glob:*.eto
 glob:*.vssscc
 glob:*.vspscc
+glob:_Resharper.*
+glob:*.Resharper.user

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel.Description;
-using System.Configuration;
 
-namespace WCFExtras.Wsdl.Documentation
+namespace WCFExtrasPlus.Wsdl.Documentation
 {
     public enum XmlCommentFormat { Default, Portable };
 

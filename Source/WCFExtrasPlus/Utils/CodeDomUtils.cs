@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.CodeDom;
 
-namespace WCFExtras.Utils
+namespace WCFExtrasPlus.Utils
 {
     static class CodeDomUtils
     {

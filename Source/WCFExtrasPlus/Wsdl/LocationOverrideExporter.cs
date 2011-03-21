@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
 using System.Xml.Schema;
+using WCFExtrasPlus.Utils;
 using ServiceDescription = System.Web.Services.Description.ServiceDescription;
-using WCFExtras.Utils;
 
-namespace WCFExtras.Wsdl
+namespace WCFExtrasPlus.Wsdl
 {
     class LocationOverrideExporter
     {
