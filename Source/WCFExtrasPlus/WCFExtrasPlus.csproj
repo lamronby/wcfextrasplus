@@ -25,7 +25,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>.\</OutputPath>
+    <OutputPath>..\..\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\log4net\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -76,6 +80,7 @@
     <Compile Include="Wsdl\Documentation\XmlCommentsExporter.cs" />
     <Compile Include="Wsdl\Documentation\XmlCommentsImporter.cs" />
     <Compile Include="Wsdl\Documentation\XmlCommentsConfig.cs" />
+    <Compile Include="Wsdl\FlatWsdl.cs" />
     <Compile Include="Wsdl\LocationOverrideExporter.cs" />
     <Compile Include="Wsdl\SingleFileExporter.cs" />
     <Compile Include="Utils\WsdlUtils.cs" />

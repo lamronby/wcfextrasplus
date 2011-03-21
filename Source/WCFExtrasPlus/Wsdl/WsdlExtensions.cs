@@ -6,6 +6,7 @@ namespace WCFExtrasPlus.Wsdl
 {
     public class WsdlExtensions : IEndpointBehavior, IWsdlExportExtension
     {
+		private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(WsdlExtensions));
         #region EndpointBehavior - Not used
         void IEndpointBehavior.AddBindingParameters(ServiceEndpoint endpoint, System.ServiceModel.Channels.BindingParameterCollection bindingParameters)
         {
@@ -45,6 +46,8 @@ namespace WCFExtrasPlus.Wsdl
         {
             if (SingleFile)
                 SingleFileExporter.ExportEndpoint(exporter);
+			else
+				FlatWsdl.ExportEndpoint(exporter);
 
             if (Location != null)
             {
