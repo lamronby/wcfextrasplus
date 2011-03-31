@@ -66,11 +66,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WsdlNamespaceSample.svc" />
     <Content Include="SoapHeadersSample.svc" />
     <Content Include="WsdlSample.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WsdlNamespaceSample.svc.cs">
+      <DependentUpon>WsdlNamespaceSample.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IWsdlNamespaceSample.cs" />
     <Compile Include="ISoapHeadersSample.cs" />
     <Compile Include="SoapHeadersSample.svc.cs">
       <DependentUpon>SoapHeadersSample.svc</DependentUpon>

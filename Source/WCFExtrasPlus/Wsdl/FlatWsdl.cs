@@ -22,8 +22,8 @@ namespace WCFExtrasPlus.Wsdl
 
 			if (Log.IsInfoEnabled)
 			{
-				Log.InfoFormat("Endpoint has {0} schemas", schemaSet.Count);
 				Log.InfoFormat("Endpoint has {0} wsdl documents", exporter.GeneratedWsdlDocuments.Count);
+				Log.InfoFormat("Endpoint has {0} schemas", schemaSet.Count);
 			}
 
             foreach (ServiceDescription wsdl in exporter.GeneratedWsdlDocuments)
@@ -44,9 +44,11 @@ namespace WCFExtrasPlus.Wsdl
                     RemoveXsdImports(schema);
 					if (Log.IsInfoEnabled)
 					{
-						Log.InfoFormat("Adding schema for namespaces: ");
+						var logMsg = new System.Text.StringBuilder("Adding schema for namespaces:");
 						foreach (var ns in schema.Namespaces.ToArray())
-							Log.InfoFormat("{0}: {1}", ns.Name, ns.Namespace);
+							logMsg.Append(" ").Append(ns.Namespace);
+
+						Log.Info(logMsg.ToString());
 					}
 					wsdl.Types.Schemas.Add(schema);
                 }
