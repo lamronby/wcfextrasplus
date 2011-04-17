@@ -107,7 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SoapHeaders\SoapHeadersSample.wsdl" />
-    <None Include="Service References\SoapHeaders\SoapHeadersSample1.wsdl" />
     <None Include="Service References\WsdlSample\WsdlSample.wsdl" />
   </ItemGroup>
   <ItemGroup>
