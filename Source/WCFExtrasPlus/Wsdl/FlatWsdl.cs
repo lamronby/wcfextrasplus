@@ -14,21 +14,24 @@ namespace WCFExtrasPlus.Wsdl
 	/// </summary>
     public class FlatWsdl
     {
+#if DEBUG
 		private static readonly ILog Log = LogManager.GetLogger(typeof(FlatWsdl));
+#endif
 
 		internal static void ExportEndpoint(WsdlExporter exporter)
         {
             XmlSchemaSet schemaSet = exporter.GeneratedXmlSchemas;
 
-			if (Log.IsInfoEnabled)
-			{
-				Log.InfoFormat("Endpoint has {0} wsdl documents", exporter.GeneratedWsdlDocuments.Count);
-				Log.InfoFormat("Endpoint has {0} schemas", schemaSet.Count);
-			}
+#if DEBUG
+			Log.InfoFormat("Endpoint has {0} wsdl documents", exporter.GeneratedWsdlDocuments.Count);
+			Log.InfoFormat("Endpoint has {0} schemas", schemaSet.Count);
+#endif
 
             foreach (ServiceDescription wsdl in exporter.GeneratedWsdlDocuments)
             {
+#if DEBUG
 				Log.InfoFormat("Parsing WSDL {0}", wsdl.Name);
+#endif
 
 				List<XmlSchema> importsList = new List<XmlSchema>();
 
@@ -42,14 +45,15 @@ namespace WCFExtrasPlus.Wsdl
                 foreach (XmlSchema schema in importsList)
                 {
                     RemoveXsdImports(schema);
-					if (Log.IsInfoEnabled)
-					{
-						var logMsg = new System.Text.StringBuilder("Adding schema for namespaces:");
-						foreach (var ns in schema.Namespaces.ToArray())
-							logMsg.Append(" ").Append(ns.Namespace);
 
-						Log.Info(logMsg.ToString());
-					}
+#if DEBUG
+					var logMsg = new System.Text.StringBuilder("Adding schema for namespaces:");
+					foreach (var ns in schema.Namespaces.ToArray())
+						logMsg.Append(" ").Append(ns.Namespace);
+
+					Log.Info(logMsg.ToString());
+#endif
+
 					wsdl.Types.Schemas.Add(schema);
                 }
             }

@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleServer", "SampleServer\SampleServer.csproj", "{EB683C78-E1DB-4731-BB56-DEB534E8F58C}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{00000000-0000-0000-0000-000000000000}") = "SampleServer", "SampleServer\SampleServer.csproj", "{EB683C78-E1DB-4731-BB56-DEB534E8F58C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleClient", "SampleClient\SampleClient.csproj", "{F9496006-E3EA-48B1-AFD0-8DAA7A480515}"
 EndProject
@@ -13,6 +13,24 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFExtrasPlus", "WCFExtrasPlus\WCFExtrasPlus.csproj", "{22037EAC-02C0-4A99-8A4F-8172590E64ED}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs06.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SampleClient\\SampleClient.csproj
+		SccProjectName1 = SampleClient
+		SccLocalPath1 = SampleClient
+		SccProjectUniqueName2 = SampleServer\\SampleServer.csproj
+		SccProjectName2 = SampleServer
+		SccLocalPath2 = SampleServer
+		SccProjectUniqueName3 = WCFExtras\\WCFExtras.csproj
+		SccProjectName3 = WCFExtras
+		SccLocalPath3 = WCFExtras
+		SccProjectUniqueName4 = SampleWCFClient\\SampleWCFClient.csproj
+		SccProjectName4 = SampleWCFClient
+		SccLocalPath4 = SampleWCFClient
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -37,23 +55,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs06.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = SampleClient\\SampleClient.csproj
-		SccProjectName1 = SampleClient
-		SccLocalPath1 = SampleClient
-		SccProjectUniqueName2 = SampleServer\\SampleServer.csproj
-		SccProjectName2 = SampleServer
-		SccLocalPath2 = SampleServer
-		SccProjectUniqueName3 = WCFExtras\\WCFExtras.csproj
-		SccProjectName3 = WCFExtras
-		SccLocalPath3 = WCFExtras
-		SccProjectUniqueName4 = SampleWCFClient\\SampleWCFClient.csproj
-		SccProjectName4 = SampleWCFClient
-		SccLocalPath4 = SampleWCFClient
 	EndGlobalSection
 EndGlobal
