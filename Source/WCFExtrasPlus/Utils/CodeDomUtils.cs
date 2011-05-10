@@ -35,20 +35,20 @@ namespace WCFExtrasPlus.Utils
             public string Name;
         }
 
-        public static Dictionary<string, CodeTypeMember> EnumerareCodeMembers(CodeCompileUnit unit)
+        public static Dictionary<string, CodeTypeMember> EnumerateCodeMembers(CodeCompileUnit unit)
         {
             Dictionary<string, CodeTypeMember> result = new Dictionary<string, CodeTypeMember>();
             foreach (CodeNamespace ns in unit.Namespaces)
             {
                 foreach (CodeTypeDeclaration decl in ns.Types)
                 {
-                    EnumerareCodeMembers(decl, null, result);
+                    EnumerateCodeMembers(decl, null, result);
                 }
             }
             return result;
         }
 
-        private static void EnumerareCodeMembers(CodeTypeMember member, QualifiedName parentName, Dictionary<string, CodeTypeMember> members)
+        private static void EnumerateCodeMembers(CodeTypeMember member, QualifiedName parentName, Dictionary<string, CodeTypeMember> members)
         {
             QualifiedName memberName = GetUniqueName(member, parentName);
             members[memberName.ToString()] = member;
@@ -57,7 +57,7 @@ namespace WCFExtrasPlus.Utils
             {
                 foreach (CodeTypeMember subMember in decl.Members)
                 {
-                    EnumerareCodeMembers(subMember, memberName, members);
+                    EnumerateCodeMembers(subMember, memberName, members);
                 }
             }
         }
@@ -115,7 +115,7 @@ namespace WCFExtrasPlus.Utils
             return new QualifiedName(ns, name);
         }
 
-        //Extensions
+        #region Extension methods
         public static CodeAttributeDeclaration Find(this CodeAttributeDeclarationCollection attributes, params string[] attributeTypes)
         {
             return attributes.Cast<CodeAttributeDeclaration>().FirstOrDefault(attribute => attributeTypes.Contains(attribute.AttributeType.BaseType));
@@ -150,5 +150,6 @@ namespace WCFExtrasPlus.Utils
         {
             return (argument.Value as CodePrimitiveExpression).Value.ToString();
         }
+        #endregion
     }
 }

@@ -103,9 +103,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\localhost\SoapHeadersSample.wsdl" />
-    <None Include="Web References\localhost\SoapHeadersSample.xsd" />
     <None Include="Web References\localhost\SoapHeadersSample0.wsdl" />
-    <None Include="Web References\localhost\SoapHeadersSample0.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

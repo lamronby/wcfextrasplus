@@ -15,7 +15,7 @@ namespace SampleWCFClient.SoapHeaders {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Header", Namespace="http://WCFExtras/Samples")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Header", Namespace="http://WCFExtrasPlus/Samples")]
     [System.SerializableAttribute()]
     public partial class Header : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -59,22 +59,22 @@ namespace SampleWCFClient.SoapHeaders {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://WCFExtras/Samples", ConfigurationName="SoapHeaders.ISoapHeadersSample")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://WCFExtrasPlus/Samples", ConfigurationName="SoapHeaders.ISoapHeadersSample")]
     [WCFExtrasPlus.Soap.SoapHeadersAttribute()]
     public interface ISoapHeadersSample {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtras/Samples/ISoapHeadersSample/NoHeaders", ReplyAction="http://WCFExtras/Samples/ISoapHeadersSample/NoHeadersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtrasPlus/Samples/ISoapHeadersSample/NoHeaders", ReplyAction="http://WCFExtrasPlus/Samples/ISoapHeadersSample/NoHeadersResponse")]
         void NoHeaders();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtras/Samples/ISoapHeadersSample/In", ReplyAction="http://WCFExtras/Samples/ISoapHeadersSample/InResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtrasPlus/Samples/ISoapHeadersSample/In", ReplyAction="http://WCFExtrasPlus/Samples/ISoapHeadersSample/InResponse")]
         [WCFExtrasPlus.Soap.SoapHeaderAttribute("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=WCFExtrasPlus.Soap.SoapHeaderDirection.In)]
         string In();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtras/Samples/ISoapHeadersSample/Out", ReplyAction="http://WCFExtras/Samples/ISoapHeadersSample/OutResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtrasPlus/Samples/ISoapHeadersSample/Out", ReplyAction="http://WCFExtrasPlus/Samples/ISoapHeadersSample/OutResponse")]
         [WCFExtrasPlus.Soap.SoapHeaderAttribute("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=WCFExtrasPlus.Soap.SoapHeaderDirection.Out)]
         void Out(string value);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtras/Samples/ISoapHeadersSample/InOut", ReplyAction="http://WCFExtras/Samples/ISoapHeadersSample/InOutResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://WCFExtrasPlus/Samples/ISoapHeadersSample/InOut", ReplyAction="http://WCFExtrasPlus/Samples/ISoapHeadersSample/InOutResponse")]
         [WCFExtrasPlus.Soap.SoapHeaderAttribute("MyHeader", typeof(SampleWCFClient.SoapHeaders.Header), Direction=WCFExtrasPlus.Soap.SoapHeaderDirection.InOut)]
         void InOut();
     }

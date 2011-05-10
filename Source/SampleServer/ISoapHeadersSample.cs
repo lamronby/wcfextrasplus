@@ -5,7 +5,7 @@ using WCFExtrasPlus.Soap;
 namespace Sample
 {
     [SoapHeaders] //This attribute signals the wsdl exporter that this contract uses SoapHeaders
-    [ServiceContract(Namespace = "http://WCFExtras/Samples")]
+    [ServiceContract(Namespace = "http://WCFExtrasPlus/Samples")]
     public interface ISoapHeadersSample
     {
         [OperationContract]
@@ -24,7 +24,7 @@ namespace Sample
         void InOut();
     }
 
-    [DataContract(Namespace = "http://WCFExtras/Samples")] //The header must have a DataContract attribute
+    [DataContract(Namespace = "http://WCFExtrasPlus/Samples")] //The header must have a DataContract attribute
     public class Header
     {
         [DataMember]

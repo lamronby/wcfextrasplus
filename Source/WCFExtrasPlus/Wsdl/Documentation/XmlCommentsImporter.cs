@@ -98,7 +98,7 @@ namespace WCFExtrasPlus.Wsdl.Documentation
 
         private void AddXmlCommentsToDataContracts(ServiceContractGenerationContext context)
         {
-            Dictionary<string, CodeTypeMember> codeMembers = CodeDomUtils.EnumerareCodeMembers(context.ServiceContractGenerator.TargetCompileUnit);
+            Dictionary<string, CodeTypeMember> codeMembers = CodeDomUtils.EnumerateCodeMembers(context.ServiceContractGenerator.TargetCompileUnit);
 
             Dictionary<string, string> documentedItems = new Dictionary<string, string>();
             WsdlUtils.EnumerateDocumentedItems(importer.wsdlDocuments, documentedItems);

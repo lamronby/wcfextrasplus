@@ -29,6 +29,8 @@ namespace SampleClient.localhost {
     [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpBinding_ISoapHeadersSample", Namespace="http://tempuri.org/")]
     public partial class SoapHeadersSample : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback NoHeadersOperationCompleted;
+        
         private Header myHeaderField;
         
         private System.Threading.SendOrPostCallback InOperationCompleted;
@@ -85,6 +87,9 @@ namespace SampleClient.localhost {
         }
         
         /// <remarks/>
+        public event NoHeadersCompletedEventHandler NoHeadersCompleted;
+        
+        /// <remarks/>
         public event InCompletedEventHandler InCompleted;
         
         /// <remarks/>
@@ -94,8 +99,34 @@ namespace SampleClient.localhost {
         public event InOutCompletedEventHandler InOutCompleted;
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://WCFExtrasPlus/Samples/ISoapHeadersSample/NoHeaders", RequestNamespace="http://WCFExtrasPlus/Samples", ResponseNamespace="http://WCFExtrasPlus/Samples", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void NoHeaders() {
+            this.Invoke("NoHeaders", new object[0]);
+        }
+        
+        /// <remarks/>
+        public void NoHeadersAsync() {
+            this.NoHeadersAsync(null);
+        }
+        
+        /// <remarks/>
+        public void NoHeadersAsync(object userState) {
+            if ((this.NoHeadersOperationCompleted == null)) {
+                this.NoHeadersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnNoHeadersOperationCompleted);
+            }
+            this.InvokeAsync("NoHeaders", new object[0], this.NoHeadersOperationCompleted, userState);
+        }
+        
+        private void OnNoHeadersOperationCompleted(object arg) {
+            if ((this.NoHeadersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.NoHeadersCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("MyHeader")]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://WCFExtras/Samples/ISoapHeadersSample/In", RequestNamespace="http://WCFExtras/Samples", ResponseNamespace="http://WCFExtras/Samples", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://WCFExtrasPlus/Samples/ISoapHeadersSample/In", RequestNamespace="http://WCFExtrasPlus/Samples", ResponseNamespace="http://WCFExtrasPlus/Samples", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public string In() {
             object[] results = this.Invoke("In", new object[0]);
@@ -124,7 +155,7 @@ namespace SampleClient.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("MyHeader", Direction=System.Web.Services.Protocols.SoapHeaderDirection.Out)]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://WCFExtras/Samples/ISoapHeadersSample/Out", RequestNamespace="http://WCFExtras/Samples", ResponseNamespace="http://WCFExtras/Samples", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://WCFExtrasPlus/Samples/ISoapHeadersSample/Out", RequestNamespace="http://WCFExtrasPlus/Samples", ResponseNamespace="http://WCFExtrasPlus/Samples", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void Out([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string value) {
             this.Invoke("Out", new object[] {
                         value});
@@ -153,7 +184,7 @@ namespace SampleClient.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("MyHeader", Direction=System.Web.Services.Protocols.SoapHeaderDirection.InOut)]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://WCFExtras/Samples/ISoapHeadersSample/InOut", RequestNamespace="http://WCFExtras/Samples", ResponseNamespace="http://WCFExtras/Samples", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://WCFExtrasPlus/Samples/ISoapHeadersSample/InOut", RequestNamespace="http://WCFExtrasPlus/Samples", ResponseNamespace="http://WCFExtrasPlus/Samples", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void InOut() {
             this.Invoke("InOut", new object[0]);
         }
@@ -202,8 +233,8 @@ namespace SampleClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://WCFExtras/Samples")]
-    [System.Xml.Serialization.XmlRootAttribute("MyHeader", Namespace="http://WCFExtras/Samples", IsNullable=true)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://WCFExtrasPlus/Samples")]
+    [System.Xml.Serialization.XmlRootAttribute("MyHeader", Namespace="http://WCFExtrasPlus/Samples", IsNullable=true)]
     public partial class Header : System.Web.Services.Protocols.SoapHeader {
         
         private string valueField;
@@ -219,6 +250,10 @@ namespace SampleClient.localhost {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void NoHeadersCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]

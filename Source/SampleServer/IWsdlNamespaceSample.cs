@@ -9,7 +9,7 @@ namespace Sample
     /// WsdlExtensions can flatten the rendered WSDL.
     /// </summary>
     [XmlComments]
-	[ServiceContract(Namespace = "http://wcfextrasplus.codeplex.com/services/2011/4")]
+    [ServiceContract(Namespace = "http://WCFExtrasPlus/Samples/services/2011/4")]
     public interface IWsdlNamespaceSample
     {
         /// <summary>
@@ -24,7 +24,7 @@ namespace Sample
     /// <summary>
     /// A basic class marked with [DataContract]
     /// </summary>
-	[DataContract(Namespace = "http://wcfextrasplus.codeplex.com/data/2011/4")]
+    [DataContract(Namespace = "http://WCFExtrasPlus/Samples/data/2011/4")]
     public class DataContractSample2
     {
         /// <summary>
