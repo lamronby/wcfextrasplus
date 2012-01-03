@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>WCFExtrasPlus</id>
+    <version>2.3.0</version>
+    <authors>Chris.Jansen</authors>
+    <owners>Chris.Jansen</owners>
+    <licenseUrl>http://wcfextrasplus.codeplex.com/license</licenseUrl>
+    <projectUrl>http://wcfextrasplus.codeplex.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Based on the WCFExtras project, which has been inactive, WCFExtras+ is a collection of useful WCF extensions including SOAP Header support, WSDL flattening and documentation, and more.</description>
+    <releaseNotes>Created NuGet package.</releaseNotes>
+    <copyright>Copyright 2008 Eyal Post, 2012 Chris Jansen</copyright>
+    <tags>wcf wcfextras soap wsdl</tags>
+  </metadata>
+</package>

@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<project    name="WCFExtras+"
+            default="release"
+            xsi:schemaLocation="http://nant.sf.net/nightly/2008-08-18-0.86/nant.xsd SDKs\nant-0.86\schema\nant.xsd"
+            xmlns="http://nant.sf.net/nightly/2008-08-18-0.86/nant.xsd"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <property name="nant.settings.currentframework" value="net-3.5" />
+  <echo message="Using '${nant.settings.currentframework}' framework on '${platform::get-name()}' platform." />
+
+  <property name="project.dir" value="${project::get-base-directory()}" />
+  <property name="project.title" value="WCFExtrasPlus" />
+  <property name="optimize" value="true" />
+  <property name="project.config" value="release" />
+  <property name="build.debug" value="false" />
+  <property name="build.dir" value="${project::get-base-directory()}/Release" />
+	<property name="update.version.exe" value="c:\Development\Tools\UpdateVersion\UpdateVersion.exe" />
+
+	<target name="release">
+		<call target="clean" />
+		<call target="update-version" />
+		<call target="build-wcfextrasplus" />
+		<copy file="license.txt" tofile="${build.dir}\license.txt" />
+	</target>
+
+	<target name="update-version">
+		<echo message="Incrementing Release version"/>
+		<foreach item="File" property="filename">
+			<in>
+				<items>
+					<include name="${project.dir}/Source/SampleClient/Properties/AssemblyInfo.cs" />
+					<include name="${project.dir}/Source/SampleServer/Properties/AssemblyInfo.cs" />
+					<include name="${project.dir}/Source/SampleWCFClient/Properties/AssemblyInfo.cs" />
+					<include name="${project.dir}/Source/WCFExtrasPlus/Properties/AssemblyInfo.cs" />
+				</items>
+			</in>
+			<do>
+				<echo message="Updating assembly version in ${filename}."/>
+				<exec program="${update.version.exe}" commandline="-b Fixed -r Increment -i ${filename} -o ${filename}" verbose="true" failonerror="true" />
+			</do>
+		</foreach>
+	</target>
+	
+  <target name="build-wcfextrasplus">
+
+		<echo message="Building WCFExtrasPlus"/>
+		<csc target="library"
+         debug="${build.debug}"
+         optimize="${optimize}"
+         output="${build.dir}\WCFExtrasPlus.dll"
+         keyfile="${project.dir}/Source/WCFExtrasPlus/WCFExtrasPlus.snk"
+         warnaserror="true">
+
+      <sources>
+				<include name="Source\WCFExtrasPlus\Properties\AssemblyInfo.cs" />
+				<include name="Source\WCFExtrasPlus\Soap\*.cs" />
+				<include name="Source\WCFExtrasPlus\Utils\*.cs" />
+				<include name="Source\WCFExtrasPlus\Wsdl\*.cs" />
+				<include name="Source\WCFExtrasPlus\Wsdl\Documentation\*.cs" />
+			</sources>
+    </csc>
+
+   </target>
+
+	<target name="zip-release">
+
+		<!--@echo off
+		REM GenDownload.zip - Generate WCFExtrasPlus Download
+		SET SEVENZ="c:\Program Files\7-Zip\7z.exe"
+		SET VERSION=%1
+
+		%SEVENZ% a -tzip WCFExtrasPlus%VERSION%.zip Release-->
+
+		<delete>
+      <fileset><include name="*.zip"/></fileset>
+    </delete>
+    
+    <property name="wcfextrasplus.version" value="${assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll'))}"/>
+
+    <zip zipfile="WCFExtrasPlus${wcfextrasplus.version}.zip">
+      <fileset basedir="${build.dir}">
+        <include name="*" />
+      </fileset>
+    </zip>
+
+  </target>
+
+	<target name="zip-source">
+		<!--<delete>
+			<fileset>
+				<include name="*.zip"/>
+			</fileset>
+		</delete>-->
+
+		<property name="wcfextrasplus.version" value="${assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll'))}"/>
+
+		<zip zipfile="WCFExtrasPlus${wcfextrasplus.version}.Source.zip">
+			<fileset basedir="${project.dir}">
+				<include name="Release/*"/>
+				<include name="Source/SampleClient/*"/>
+				<include name="Source/SampleClient/Properties/*"/>
+				<include name="Source/SampleClient/Web References/localhost/*"/>
+				<include name="Source/SampleServer/*"/>
+				<include name="Source/SampleServer/Properties/*"/>
+				<include name="Source/SampleWCFClient/*"/>
+				<include name="Source/SampleWCFClient/Properties/*"/>
+				<include name="Source/SampleWCFClient/Service References/SoapHeaders/*"/>
+				<include name="Source/SampleWCFClient/Service References/WsdlSample/*"/>
+				<include name="Source/WCFExtrasPlus/*"/>
+				<include name="Source/WCFExtrasPlus/Properties/*"/>
+				<include name="Source/WCFExtrasPlus/Soap/*.cs"/>
+				<include name="Source/WCFExtrasPlus/Utils/*.cs"/>
+				<include name="Source/WCFExtrasPlus/Wsdl/Documentation/*.cs"/>
+				<include name="Source/WCFExtrasPlus/Wsdl/*.cs"/>
+				<include name="Source/WCFExtrasPlus.sln"/>
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+</project>
