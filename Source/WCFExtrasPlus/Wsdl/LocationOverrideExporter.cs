@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
 using System.Xml.Schema;
@@ -30,6 +31,7 @@ namespace WCFExtrasPlus.Wsdl
             }
 
             EnumerateWsdlsAndSchemas(exporter.GeneratedWsdlDocuments, exporter.GeneratedXmlSchemas);
+            context.Endpoint.Address = new EndpointAddress(location);
 
             foreach (ServiceDescription description in exporter.GeneratedWsdlDocuments)
             {

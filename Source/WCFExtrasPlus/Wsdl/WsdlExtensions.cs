@@ -27,6 +27,10 @@ namespace WCFExtrasPlus.Wsdl
 
         public bool SingleFile { get; set; }
 
+        public WsdlExtensions()
+        {
+        }
+
         internal WsdlExtensions(WsdlExtensionsConfig config)
         {
             this.Location = config.Location;
