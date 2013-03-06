@@ -15,24 +15,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFExtrasPlus.Tests", "WCFExtrasPlus.Tests\WCFExtrasPlus.Tests.csproj", "{91096500-8174-4806-ADA7-05C2637E80E3}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs06.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = SampleClient\\SampleClient.csproj
-		SccProjectName1 = SampleClient
-		SccLocalPath1 = SampleClient
-		SccProjectUniqueName2 = SampleServer\\SampleServer.csproj
-		SccProjectName2 = SampleServer
-		SccLocalPath2 = SampleServer
-		SccProjectUniqueName3 = WCFExtras\\WCFExtras.csproj
-		SccProjectName3 = WCFExtras
-		SccLocalPath3 = WCFExtras
-		SccProjectUniqueName4 = SampleWCFClient\\SampleWCFClient.csproj
-		SccProjectName4 = SampleWCFClient
-		SccLocalPath4 = SampleWCFClient
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
