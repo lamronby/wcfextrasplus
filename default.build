@@ -5,6 +5,11 @@
             xmlns="http://nant.sf.net/nightly/2008-08-18-0.86/nant.xsd"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+	<!--
+	TODOs:
+	Implement nuget-publish target.
+	Implement injection of release notes into nuspec file from text file.
+	-->
   <property name="nant.settings.currentframework" value="net-3.5" />
   <echo message="Using '${nant.settings.currentframework}' framework on '${platform::get-name()}' platform." />
 
@@ -15,6 +20,12 @@
   <property name="build.debug" value="false" />
   <property name="build.dir" value="${project::get-base-directory()}/Release" />
 	<property name="update.version.exe" value="c:\Development\Tools\UpdateVersion\UpdateVersion.exe" />
+	<property name="nuget.exe" value="c:\Development\Tools\NuGet\NuGet.exe" />
+	<property name="nuget.spec.file" value="${project.dir}/NuGet/WCFExtrasPlus.nuspec" />
+	<!-- Indicates whether to increment the build number.  -->
+	<property name="increment.build" value="false" />
+	<property name="build.arg" value="Fixed" />
+	<property name="global.assembly.file" value="${project.dir}/Source/GlobalAssemblyInfo.cs" />
 
 	<target name="release">
 		<call target="clean" />
@@ -24,21 +35,19 @@
 	</target>
 
 	<target name="update-version">
+		<!-- 
+			Note that update.version.exe uses build number format 
+			<major>.<minor>.<build>.<revision>, but I use it as 
+			<major>.<minor>.<revision>.<build>, so the "revision" is always 
+			incremented, but the "build" is only incremented if configured to do so.
+		-->
 		<echo message="Incrementing Release version"/>
-		<foreach item="File" property="filename">
-			<in>
-				<items>
-					<include name="${project.dir}/Source/SampleClient/Properties/AssemblyInfo.cs" />
-					<include name="${project.dir}/Source/SampleServer/Properties/AssemblyInfo.cs" />
-					<include name="${project.dir}/Source/SampleWCFClient/Properties/AssemblyInfo.cs" />
-					<include name="${project.dir}/Source/WCFExtrasPlus/Properties/AssemblyInfo.cs" />
-				</items>
-			</in>
-			<do>
-				<echo message="Updating assembly version in ${filename}."/>
-				<exec program="${update.version.exe}" commandline="-b Fixed -r Increment -i ${filename} -o ${filename}" verbose="true" failonerror="true" />
-			</do>
-		</foreach>
+		<if test="${increment.build=='true'}">
+			<echo>Incrementing version revision</echo>
+			<property name="build.arg" value="Increment" />
+		</if>
+		<echo message="Updating assembly version in ${global.assembly.file}."/>
+		<exec program="${update.version.exe}" commandline="-b ${build.arg} -r Automatic -i ${global.assembly.file} -o ${global.assembly.file}" verbose="true" failonerror="true" />
 	</target>
 	
   <target name="build-wcfextrasplus">
@@ -52,6 +61,7 @@
          warnaserror="true">
 
       <sources>
+				<include name="Source\GlobalAssemblyInfo.cs" />
 				<include name="Source\WCFExtrasPlus\Properties\AssemblyInfo.cs" />
 				<include name="Source\WCFExtrasPlus\Soap\*.cs" />
 				<include name="Source\WCFExtrasPlus\Utils\*.cs" />
@@ -62,14 +72,22 @@
 
    </target>
 
+	<target name="build-nuget">
+		<!-- Copy Release folder into NuGet folder -->
+		<echo message="Copying release files to NuGet directory" />
+		<copy todir="${project.dir}/NuGet/lib">
+			<fileset basedir="${build.dir}">
+				<include name="*.dll" />
+			</fileset>
+		</copy>
+
+		<property name="nuget.version" value="${version::get-major(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll')))}.${version::get-minor(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll')))}.${version::get-build(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll')))}"/>
+		<echo message="${nuget.version}" />
+		
+		<exec program="${nuget.exe}" commandline="pack ${nuget.spec.file} -Version ${nuget.version}" verbose="true" failonerror="true" />
+	</target>
+	
 	<target name="zip-release">
-
-		<!--@echo off
-		REM GenDownload.zip - Generate WCFExtrasPlus Download
-		SET SEVENZ="c:\Program Files\7-Zip\7z.exe"
-		SET VERSION=%1
-
-		%SEVENZ% a -tzip WCFExtrasPlus%VERSION%.zip Release-->
 
 		<delete>
       <fileset><include name="*.zip"/></fileset>
