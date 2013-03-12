@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="492a35b5-9a9a-4031-85b5-38e065a38c8b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="73651e8e-941b-4d57-a3a9-d72011517221" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,11 +18,12 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/Sample/SoapHeadersSample.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/Sample/SoapHeadersSample.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SoapHeadersSample.wsdl" MetadataType="Wsdl" ID="8002cf0f-1099-46d9-b467-a8f51b1c30bc" SourceId="1" SourceUrl="http://127.0.0.1/Sample/SoapHeadersSample.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="SoapHeadersSample1.wsdl" MetadataType="Wsdl" ID="0544973f-d8f5-4f85-87e8-41468de331f2" SourceId="1" SourceUrl="http://localhost/Sample/SoapHeadersSample.svc?wsdl" />
+    <MetadataFile FileName="SoapHeadersSample.wsdl" MetadataType="Wsdl" ID="c5e0b369-d35c-4ab5-b59e-55f4c91dfe58" SourceId="1" SourceUrl="http://127.0.0.1/Sample/SoapHeadersSample.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="SoapHeadersSample.disco" MetadataType="Disco" ID="73a71f64-ac33-4215-850e-7872d07c4225" SourceId="1" SourceUrl="http://insle0040309.peak8ddc.local/Sample/SoapHeadersSample.svc?disco" />
+    <MetadataFile FileName="SoapHeadersSample1.wsdl" MetadataType="Wsdl" ID="54e2b644-5e20-4fcd-ae24-ac457083b86b" SourceId="1" SourceUrl="http://insle0040309.peak8ddc.local/Sample/SoapHeadersSample.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

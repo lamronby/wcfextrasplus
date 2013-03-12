@@ -9,7 +9,7 @@ namespace Sample
             throw new NotImplementedException();
         }
 
-        public void Operation2(DataContractSample data, DataContractSample.DataContractSampleInner innerData)
+        public void Operation2(InheritedContract data, DataContractSample.DataContractSampleInner innerData)
         {
             throw new NotImplementedException();
         }

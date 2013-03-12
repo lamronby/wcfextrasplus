@@ -17,7 +17,7 @@
       <xsd:element name="Operation2">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/Sample" minOccurs="0" name="data" nillable="true" type="q1:DataContractSample" />
+            <xsd:element xmlns:q1="http://schemas.datacontract.org/2004/07/Sample" minOccurs="0" name="data" nillable="true" type="q1:InheritedContract" />
             <xsd:element xmlns:q2="http://schemas.datacontract.org/2004/07/Sample" minOccurs="0" name="innerData" nillable="true" type="q2:DataContractSample.DataContractSampleInner" />
           </xsd:sequence>
         </xsd:complexType>
@@ -99,13 +99,31 @@
       <xs:attribute name="Ref" type="xs:IDREF" />
     </xs:schema>
     <xsd:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Sample" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Sample">
-      <xsd:complexType name="DataContractSample">
+      <xsd:complexType name="InheritedContract">
         <xsd:annotation>
           <xsd:appinfo />
           <xsd:documentation>&lt;summary&gt;
-            A basic class marked with [DataContract]
+            A data contract that inherits from DataContractSample.
             &lt;/summary&gt;</xsd:documentation>
         </xsd:annotation>
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:DataContractSample">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="Property" nillable="true" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:appinfo />
+                  <xsd:documentation>&lt;summary&gt;
+            Gets or sets the property.
+            &lt;/summary&gt;
+            &lt;value&gt;The property.&lt;/value&gt;</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="InheritedContract" nillable="true" type="tns:InheritedContract" />
+      <xsd:complexType name="DataContractSample">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="ErrorCodeField" type="tns:ErrorCodes">
             <xsd:annotation>
@@ -119,7 +137,7 @@
             <xsd:annotation>
               <xsd:appinfo />
               <xsd:documentation>&lt;summary&gt;
-            A memeber with a name that collides with the ExtensionData member 
+            A member with a name that collides with the ExtensionData member 
             inherited from IExtensibleDataObject
             &lt;/summary&gt;</xsd:documentation>
             </xsd:annotation>

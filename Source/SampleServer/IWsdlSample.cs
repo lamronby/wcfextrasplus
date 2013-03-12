@@ -9,7 +9,7 @@ namespace Sample
     /// can be placed anywhere in code are rendered to the result WSDL.
     /// These comments will also be imported to the client generated proxy if the proxy configured correctly
     /// </summary>
-    [XmlComments]
+	[XmlComments]
     [ServiceContract]
     public interface IWsdlSample
     {
@@ -28,7 +28,7 @@ namespace Sample
         /// <param name="data">Regular DataContract parameter</param>
         /// <param name="innerData">This parameter is from a type declared as an inner class inside a DataContract</param>
         [OperationContract]
-        void Operation2(DataContractSample data, DataContractSample.DataContractSampleInner innerData);
+        void Operation2(InheritedContract data, DataContractSample.DataContractSampleInner innerData);
 
         /// This text is placed outside of any tag. It will not be rendered when using the Portable format
         /// <summary>
@@ -107,7 +107,7 @@ namespace Sample
         public int Member2 { get; set; }
 
         /// <summary>
-        /// A memeber with a name that collides with the ExtensionData member 
+        /// A member with a name that collides with the ExtensionData member 
         /// inherited from IExtensibleDataObject
         /// </summary>
         [DataMember]
@@ -167,5 +167,23 @@ namespace Sample
         [DataMember]
         public string str;
     }
+
+	/// <summary>
+	/// A data contract that inherits from DataContractSample.
+	/// </summary>
+	[DataContract]
+	public class InheritedContract : DataContractSample
+	{
+		/// <summary>
+		/// Gets or sets the property.
+		/// </summary>
+		/// <value>The property.</value>
+		[DataMember]
+		public string Property
+		{
+			get;
+			set;
+		}
+	}
 }
 

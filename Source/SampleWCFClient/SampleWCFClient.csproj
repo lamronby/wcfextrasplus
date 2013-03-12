@@ -102,6 +102,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\WsdlSample\WsdlSample.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\SoapHeaders\" />
@@ -110,16 +111,6 @@
   <ItemGroup>
     <None Include="Service References\SoapHeaders\SoapHeadersSample.wsdl" />
     <None Include="Service References\SoapHeaders\SoapHeadersSample1.wsdl" />
-    <None Include="Service References\WsdlSample\WsdlSample.wsdl">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WsdlSample\configuration.svcinfo" />
-    <None Include="Service References\WsdlSample\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCFExtrasPlus\WCFExtrasPlus.csproj">
@@ -157,7 +148,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\WsdlSample\WsdlSample.disco" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\WsdlSample\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsdlSample\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WsdlSample\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
