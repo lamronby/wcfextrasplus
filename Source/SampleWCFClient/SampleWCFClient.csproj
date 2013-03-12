@@ -102,15 +102,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WsdlSample\WsdlSample.wsdl" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SoapHeaders\" />
-    <WCFMetadataStorage Include="Service References\WsdlSample\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\SoapHeaders\SoapHeadersSample.wsdl" />
     <None Include="Service References\SoapHeaders\SoapHeadersSample1.wsdl" />
+    <None Include="Service References\WsdlSample\WsdlSample.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCFExtrasPlus\WCFExtrasPlus.csproj">
@@ -134,6 +128,13 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SoapHeaders\" />
+    <WCFMetadataStorage Include="Service References\WsdlSample\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SoapHeaders\SoapHeadersSample.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SoapHeaders\configuration91.svcinfo" />
