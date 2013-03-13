@@ -1,0 +1,2 @@
+Fixed an issue with overriding the endpoint location when wsHttpBinding is used.
+
