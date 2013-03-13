@@ -136,6 +136,7 @@
 				<include name="Source/WCFExtrasPlus/Wsdl/*.cs"/>
 				<include name="Source/WCFExtrasPlus.Tests/*"/>
 				<include name="Source/WCFExtrasPlus.Tests/Properties/*"/>
+				<include name="Source/GlobalAssemblyInfo.cs"/>
 				<include name="Source/WCFExtrasPlus.sln"/>
 			</fileset>
 		</zip>

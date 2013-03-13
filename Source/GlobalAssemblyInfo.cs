@@ -10,4 +10,4 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("Release")]
 #endif
 
-[assembly: AssemblyVersion("2.3.1.905")]
+[assembly: AssemblyVersion("2.3.1.8201")]
