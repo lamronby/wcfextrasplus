@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
@@ -167,7 +167,7 @@ namespace WCFExtrasPlus.Wsdl.Documentation
         {
             InitXsdDataContractExporter(exporter, format);
 
-            XmlDocument commentsDoc = XmlCommentsUtils.LoadXmlComments(context.Contract.ContractType, true);
+            XmlDocument commentsDoc = XmlCommentsUtils.LoadXmlComments(context.Contract.ContractType);
             if (commentsDoc == null)
                 return;
 

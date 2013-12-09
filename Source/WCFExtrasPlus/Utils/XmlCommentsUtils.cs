@@ -86,9 +86,9 @@ namespace WCFExtrasPlus.Utils
         {
             reference = Regex.Replace(reference, "\\(.*\\)", "()");
 
-            int maxLen = Math.Min(reference.LastIndexOf('.'), memberName.Length);
+            int maxIndex = Math.Min(reference.LastIndexOf('.'), reference.Length-1);
             int index = 0;
-            while (index <= maxLen && memberName[index] == reference[index])
+            while (index <= maxIndex && (memberName.Length < reference.Length || memberName[index] == reference[index]))
                 index++;
 
             return reference.Substring(index);

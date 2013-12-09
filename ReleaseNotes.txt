@@ -1,2 +1,2 @@
-Fixed an issue with overriding the endpoint location when wsHttpBinding is used.
+(PF) Fixed an index OOB issue when parsing CREFs in XML comments.
 
