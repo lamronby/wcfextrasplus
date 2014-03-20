@@ -183,6 +183,10 @@ namespace WCFExtrasPlus.Wsdl.Documentation
                 MemberInfo mi = opDescription.SyncMethod;
                 if (mi == null)
                     mi = opDescription.BeginMethod;
+#if NET45
+                if (mi == null)
+                    mi = opDescription.TaskMethod;
+#endif
                 comment = XmlCommentsUtils.GetFormattedComment(commentsDoc, mi, format);
                 if (comment != null)
                 {

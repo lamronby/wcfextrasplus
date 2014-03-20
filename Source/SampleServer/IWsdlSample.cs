@@ -9,7 +9,7 @@ namespace Sample
     /// can be placed anywhere in code are rendered to the result WSDL.
     /// These comments will also be imported to the client generated proxy if the proxy configured correctly
     /// </summary>
-	[XmlComments]
+    [XmlComments]
     [ServiceContract]
     public interface IWsdlSample
     {
@@ -168,22 +168,22 @@ namespace Sample
         public string str;
     }
 
-	/// <summary>
-	/// A data contract that inherits from DataContractSample.
-	/// </summary>
-	[DataContract]
-	public class InheritedContract : DataContractSample
-	{
-		/// <summary>
-		/// Gets or sets the property.
-		/// </summary>
-		/// <value>The property.</value>
-		[DataMember]
-		public string Property
-		{
-			get;
-			set;
-		}
-	}
+    /// <summary>
+    /// A data contract that inherits from DataContractSample.
+    /// </summary>
+    [DataContract]
+    public class InheritedContract : DataContractSample
+    {
+        /// <summary>
+        /// Gets or sets the property.
+        /// </summary>
+        /// <value>The property.</value>
+        [DataMember]
+        public string Property
+        {
+            get;
+            set;
+        }
+    }
 }
 
