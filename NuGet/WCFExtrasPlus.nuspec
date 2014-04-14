@@ -9,10 +9,10 @@
     <projectUrl>http://wcfextrasplus.codeplex.com</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Based on the WCFExtras project, which has been inactive, WCFExtras+ is a collection of useful WCF extensions including SOAP Header support, WSDL flattening and documentation, and more.</description>
-    <releaseNotes>Fixed an issue with overriding the endpoint location when wsHttpBinding is used.
+    <releaseNotes>(PF) Fixed an index OOB issue when parsing CREFs in XML comments.
 
 </releaseNotes>
-    <copyright>Copyright © 2008-2013 Eyal Post, Chris Jansen</copyright>
+    <copyright>Copyright © 2008-2014 Eyal Post, Chris Jansen</copyright>
     <tags>wcf wcfextras soap wsdl</tags>
   </metadata>
 </package>

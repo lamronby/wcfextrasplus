@@ -1,85 +1,187 @@
 <?xml version="1.0"?>
-<project    name="WCFExtras+"
-            default="release"
-            xsi:schemaLocation="http://nant.sf.net/nightly/2008-08-18-0.86/nant.xsd SDKs\nant-0.86\schema\nant.xsd"
-            xmlns="http://nant.sf.net/nightly/2008-08-18-0.86/nant.xsd"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project		name="WCFExtras+"
+						default="release"
+						xsi:schemaLocation="http://nant.sf.net/nightly/2008-08-18-0.86/nant.xsd SDKs\nant-0.86\schema\nant.xsd"
+						xmlns="http://nant.sf.net/nightly/2008-08-18-0.86/nant.xsd"
+						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <property name="nant.settings.currentframework" value="net-3.5" />
-  <echo message="Using '${nant.settings.currentframework}' framework on '${platform::get-name()}' platform." />
+	<!-- <property name="nant.settings.currentframework" value="net-3.5" /> -->
+	<echo message="Using '${nant.settings.currentframework}' framework on '${platform::get-name()}' platform." />
 
-  <property name="project.dir" value="${project::get-base-directory()}" />
-  <property name="project.title" value="WCFExtrasPlus" />
-  <property name="optimize" value="true" />
-  <property name="build.debug" value="false" />
-  <property name="build.dir" value="${project::get-base-directory()}/Release" />
-	<property name="update.version.exe" value="c:\Development\Tools\UpdateVersion\UpdateVersion.exe" />
-	<property name="nuget.exe" value="c:\Development\Tools\NuGet\NuGet.exe" />
+	<!-- Indicates whether to increment the build number -->
+	<property name="incr.major" value="false" />
+	<property name="incr.minor" value="false" />
+	<property name="incr.revision" value="false" />
+	<property name="incr.build" value="true" />
+	<!-- STOPPED HERE! -->
+
+	<property name="project.dir" value="${project::get-base-directory()}" />
+	<property name="update.version.exe" value="./UpdateVersion.exe" />
+	<property name="source.dir" value="${project.dir}/source" />
+	<property name="build.configuration" value="Release" />
+	<property name="project.title" value="WCFExtrasPlus" />
+	<property name="build.debug" value="false" />
+	<property name="build.dir" value="${project::get-base-directory()}/Release" />
+	<property name="nuget.exe" value="NuGet.exe" />
 	<property name="nuget.spec.file" value="${project.dir}/NuGet/WCFExtrasPlus.nuspec" />
 	<property name="releasenotes.file" value="${project.dir}/ReleaseNotes.txt" />
-	<!-- Indicates whether to increment the build number -->
-	<property name="increment.build" value="false" />
-	<!-- Argument to update.version.exe for how the build number should be set -->
-	<property name="build.arg" value="Fixed" />
 	<property name="global.assembly.file" value="${project.dir}/Source/GlobalAssemblyInfo.cs" />
 
 	<target name="release">
 		<call target="clean" />
-		<call target="update-version" />
+		<call target="show-properties" />
+		<call target="build-global-assembly" />
 		<call target="build-wcfextrasplus" />
 		<copy file="license.txt" tofile="${build.dir}\license.txt" />
 	</target>
 
-	<target name="update-version">
-		<!-- 
-			Note that update.version.exe uses build number format 
-			<major>.<minor>.<build>.<revision>, but I use it as 
-			<major>.<minor>.<revision>.<build>, so the "build" is always 
-			incremented, but the "revision" is either Fixed or Automatic depending on 
-			the increment.build setting.
-		-->
-		<echo message="Incrementing Release version"/>
-		<if test="${increment.build=='true'}">
-			<echo>Incrementing version revision</echo>
-			<property name="build.arg" value="Increment" />
-		</if>
-		<echo message="Updating assembly version in ${global.assembly.file}."/>
-		<exec program="${update.version.exe}" commandline="-b ${build.arg} -r Automatic -i ${global.assembly.file} -o ${global.assembly.file}" verbose="true" failonerror="true" />
+	<target name="show-properties">
+		<echo message="Build configuration:" />
+		<script language="C#">
+			<references>
+				<include name="System.dll" />
+			</references>
+			<imports>
+				<import namespace="System.Collections.Generic" />
+			</imports>
+			<code>
+				<![CDATA[
+					public static void ScriptMain(Project project) {
+						var sortedByKey = new SortedDictionary<string, string>();
+						foreach(DictionaryEntry de in project.Properties)
+							sortedByKey.Add(de.Key.ToString(), de.Value.ToString());
+
+						var echo = new NAnt.Core.Tasks.EchoTask();
+						echo.Project = project;
+						foreach(var kvp in sortedByKey) {
+							if(kvp.Key.StartsWith("nant."))
+								continue;
+											
+							echo.Message = String.Format("{0}: {1}", kvp.Key, kvp.Value);
+							echo.Execute();
+						}
+					}
+				]]>
+			</code>
+		</script>
 	</target>
-	
-  <target name="build-wcfextrasplus">
 
+	<target name="get-last-version">
+		<loadfile 
+			file="${global.assembly.file}"
+			property="global.assembly.info" />
+
+		<regex
+			pattern="assembly: AssemblyVersionAttribute..(?'lastversion'\d+.\d+.\d+.\d+).."
+			input="${global.assembly.info}" />
+
+		<echo message="Last version=${lastversion}" />
+	</target>
+
+	<target name="update-version" depends="get-last-version">
+		<!-- 
+			The Version class is documented to use a build number format of
+			<major>.<minor>.<build>.<revision>, but I use it as 
+			<major>.<minor>.<revision>.<build>, so the "build", which is always 
+			incremented, is last, and the "revision" can be static.
+		-->
+		<echo message="Incrementing build number"/>
+		<script language="C#">
+		  <imports>
+		    <import namespace="System.Globalization" />
+		    <import namespace="System.Threading" />
+		  </imports>
+		  <code><![CDATA[
+		    public static void ScriptMain(Project project) {
+		      Version version = new Version(project.Properties["lastversion"]);
+		      int major = version.Major;
+		      int minor = version.Minor;
+		      int revision = version.Build;
+		      int build = version.Revision;
+		      if (project.Properties["incr.major"] == "true") {
+		      	major++;
+		      	minor = 0;
+		      	revision = 0;
+		      	build = 0;
+		      }
+		      else if (project.Properties["incr.minor"] == "true") {
+		      	minor++;
+		      	revision = 0;
+		      	build = 0;
+		      }
+
+		      if (project.Properties["incr.revision"] == "true")
+		      	revision++;
+		      if (project.Properties["incr.build"] == "true")
+		      	build++;
+		      version = new Version(major, minor, revision, build);
+		      project.Properties["build.version"] = version.ToString();
+		    }
+		  ]]></code>
+		</script>
+
+		<echo message="New number: ${build.version}"/>
+		<!-- <exec program="${update.version.exe}" commandline="-b ${build.arg} -r Automatic -i ${global.assembly.file} -o ${global.assembly.file}" verbose="true" failonerror="true" /> -->
+
+	</target>
+
+	<target name="build-global-assembly" depends="update-version">
+		<echo message="Re-generating global assembly file with version ${build.version}"/>
+		<asminfo language="CSharp" output="${global.assembly.file}">
+		    <imports>
+		        <import namespace="System.Reflection" />
+		    </imports>
+		    <attributes>
+		        <attribute type="AssemblyProductAttribute" value="WCFExtrasPlus" />
+		        <attribute type="AssemblyCopyrightAttribute" value="Copyright © 2008-2014 Eyal Post, Chris Jansen" />
+		        <attribute type="AssemblyConfigurationAttribute" value="${build.configuration}" />
+		        <attribute type="AssemblyVersionAttribute" value="${build.version}" />
+		    </attributes>
+   		</asminfo>
+	</target>
+
+	<target name="build-wcfextrasplus">
 		<echo message="Building WCFExtrasPlus"/>
-		<csc target="library"
-         debug="${build.debug}"
-         optimize="${optimize}"
-         output="${build.dir}\WCFExtrasPlus.dll"
-         keyfile="${project.dir}/Source/WCFExtrasPlus/WCFExtrasPlus.snk"
-         warnaserror="true">
+		<loadtasks assembly="${nant::get-base-directory()}..\..\nantcontrib-0.92\bin\NAnt.Contrib.Tasks.dll" />
 
-      <sources>
-				<include name="Source\GlobalAssemblyInfo.cs" />
-				<include name="Source\WCFExtrasPlus\Properties\AssemblyInfo.cs" />
-				<include name="Source\WCFExtrasPlus\Soap\*.cs" />
-				<include name="Source\WCFExtrasPlus\Utils\*.cs" />
-				<include name="Source\WCFExtrasPlus\Wsdl\*.cs" />
-				<include name="Source\WCFExtrasPlus\Wsdl\Documentation\*.cs" />
-			</sources>
-    </csc>
+		<echo message="Target framework: 3.5"/>
+		<msbuild project="${source.dir}/WCFExtrasPlus/WCFExtrasPlus.csproj" verbose="true">     
+          <arg value="/p:Configuration=ReleaseNet35" />
+          <arg value="/t:Rebuild" />
+          <arg value="/p:OutputPath=${build.dir}/net35" />
+        </msbuild>
 
-   </target>
+		<echo message="Target framework: 4.0"/>
+		<msbuild project="${source.dir}/WCFExtrasPlus/WCFExtrasPlus.csproj" verbose="true">     
+          <arg value="/p:Configuration=ReleaseNet40" />
+          <arg value="/t:Rebuild" />
+          <arg value="/p:OutputPath=${build.dir}/net40" />
+        </msbuild>
+
+		<echo message="Target framework: 4.5"/>
+		<msbuild project="${source.dir}/WCFExtrasPlus/WCFExtrasPlus.csproj" verbose="true">     
+          <arg value="/p:Configuration=Release" />
+          <arg value="/t:Rebuild" />
+          <arg value="/p:OutputPath=${build.dir}/net45" />
+        </msbuild>
+	 </target>
 
 	<target name="pack-nuget">
+		<!-- Download nuget if it does not exist. -->
+		<get if="${not file::exists(nuget.exe)}"
+		     src="http://nuget.org/nuget.exe"
+			 dest="${nuget.exe}" />
+
 		<!-- Copy Release folder into NuGet folder -->
 		<echo message="Copying release files to NuGet directory" />
 		<copy todir="${project.dir}/NuGet/lib">
 			<fileset basedir="${build.dir}">
-				<include name="*.dll" />
+				<include name="**/*.dll" />
 			</fileset>
 		</copy>
 
 		<!-- Set the nuget version from the DLL version -->
-		<property name="nuget.version" value="${version::get-major(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll')))}.${version::get-minor(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll')))}.${version::get-build(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll')))}"/>
+		<property name="nuget.version" value="${version::get-major(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\net45\WCFExtrasPlus.dll')))}.${version::get-minor(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\net45\WCFExtrasPlus.dll')))}.${version::get-build(assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\net45\WCFExtrasPlus.dll')))}"/>
 		<echo message="Packing NuGet package version ${nuget.version}" />
 		
 		<!-- Load release notes into the nuspec -->
@@ -94,18 +196,18 @@
 	<target name="zip-release">
 
 		<delete>
-      <fileset><include name="*.zip"/></fileset>
-    </delete>
-    
-    <property name="wcfextrasplus.version" value="${assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll'))}"/>
+			<fileset><include name="*.zip"/></fileset>
+		</delete>
+		
+		<property name="wcfextrasplus.version" value="${assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll'))}"/>
 
-    <zip zipfile="WCFExtrasPlus${wcfextrasplus.version}.zip">
-      <fileset basedir="${build.dir}">
-        <include name="*" />
-      </fileset>
-    </zip>
+		<zip zipfile="WCFExtrasPlus${wcfextrasplus.version}.zip">
+			<fileset basedir="${build.dir}">
+				<include name="*" />
+			</fileset>
+		</zip>
 
-  </target>
+	</target>
 
 	<target name="zip-source">
 		<!--<delete>
