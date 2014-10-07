@@ -142,7 +142,7 @@
 
 	<target name="build-wcfextrasplus">
 		<echo message="Building WCFExtrasPlus"/>
-		<loadtasks assembly="${nant::get-base-directory()}..\..\nantcontrib-0.92\bin\NAnt.Contrib.Tasks.dll" />
+		<loadtasks assembly="${project.dir}\source\packages\NAnt.Contrib.Portable.0.92\tools\NAnt.Contrib.Tasks.dll" />
 
 		<echo message="Target framework: 3.5"/>
 		<msbuild project="${source.dir}/WCFExtrasPlus/WCFExtrasPlus.csproj" verbose="true">     
