@@ -13,10 +13,7 @@
 	<property name="incr.minor" value="false" />
 	<property name="incr.revision" value="false" />
 	<property name="incr.build" value="true" />
-	<!-- STOPPED HERE! -->
-
 	<property name="project.dir" value="${project::get-base-directory()}" />
-	<property name="update.version.exe" value="./UpdateVersion.exe" />
 	<property name="source.dir" value="${project.dir}/source" />
 	<property name="build.configuration" value="Release" />
 	<property name="project.title" value="WCFExtrasPlus" />
@@ -121,7 +118,6 @@
 		</script>
 
 		<echo message="New number: ${build.version}"/>
-		<!-- <exec program="${update.version.exe}" commandline="-b ${build.arg} -r Automatic -i ${global.assembly.file} -o ${global.assembly.file}" verbose="true" failonerror="true" /> -->
 
 	</target>
 

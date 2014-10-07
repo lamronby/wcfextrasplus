@@ -8,10 +8,11 @@
     <licenseUrl>http://wcfextrasplus.codeplex.com/license</licenseUrl>
     <projectUrl>http://wcfextrasplus.codeplex.com</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Based on the WCFExtras project, which has been inactive, WCFExtras+ is a collection of useful WCF extensions including SOAP Header support, WSDL flattening and documentation, and more.</description>
-    <releaseNotes>(PF) Fixed an index OOB issue when parsing CREFs in XML comments.
-
-</releaseNotes>
+    <description>WCFExtras+ is a collection of useful WCF extensions including SOAP Header support, WSDL flattening and documentation, and more.</description>
+    <releaseNotes>Fixed an index out-of-bounds issue when parsing CREFs in XML comments.
+Converted solution and projects to VS 2013.
+In NuGet package, added support for multiple .NET framework versions.
+Added support for .NET 4.5 when using task-based operations in WCF contract.</releaseNotes>
     <copyright>Copyright © 2008-2014 Eyal Post, Chris Jansen</copyright>
     <tags>wcf wcfextras soap wsdl</tags>
   </metadata>
