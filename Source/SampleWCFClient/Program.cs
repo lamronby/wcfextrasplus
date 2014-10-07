@@ -13,36 +13,22 @@ namespace SampleWCFClient
 
         private static void TestSoapHeaders()
         {
-            SoapHeadersSampleClient client = new SoapHeadersSampleClient();
+            var client = new SoapHeadersSampleClient() { MyHeader = new Header() { Value = "Test Input" } };
 
-            //Test Input header
-            client.MyHeader = new Header() { Value = "Test Input" };
-            string result = client.In();
-            Console.Write("Input header: " + result);
-            if (result == "Test Input")
-                Console.WriteLine(" - Passed");
-            else
-                Console.WriteLine(" - Failed");
+            // Test Input header
+            var result = client.In();
+            Console.WriteLine("Input header: {0}{1}", result, (result == "Test Input" ? " - Passed" : " - Failed"));
 
-            //Test Output header
+            // Test Output header
             client.Out("Testing output");
             result = client.MyHeader.Value;
-            Console.Write("Output header: " + result);
-            if (result == "Testing output")
-                Console.WriteLine(" - Passed");
-            else
-                Console.WriteLine(" - Failed");
+            Console.WriteLine("Output header: {0}{1}", result, (result == "Testing output" ? " - Passed" : " - Failed"));
 
-            //Test InOut header
+            // Test InOut header
             client.MyHeader = new Header() { Value = "Test InOut" };
             client.InOut();
             result = client.MyHeader.Value;
-
-            Console.Write("InOut header: " + result);
-            if (result == "Test InOut InOut")
-                Console.WriteLine(" - Passed");
-            else
-                Console.WriteLine(" - Failed");
+            Console.Write("InOut header: {0}{1}", result, (result == "Test InOut InOut" ? " - Passed" : " - Failed"));
         }
     }
 
