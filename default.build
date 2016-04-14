@@ -195,11 +195,12 @@
 			<fileset><include name="*.zip"/></fileset>
 		</delete>
 		
-		<property name="wcfextrasplus.version" value="${assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\WCFExtrasPlus.dll'))}"/>
+		<property name="wcfextrasplus.version" value="${assemblyname::get-version(assemblyname::get-assembly-name(build.dir + '\net45\WCFExtrasPlus.dll'))}"/>
 
 		<zip zipfile="WCFExtrasPlus${wcfextrasplus.version}.zip">
 			<fileset basedir="${build.dir}">
-				<include name="*" />
+				<include name="**/*" />
+				<exclude name="**/*.pdb" />
 			</fileset>
 		</zip>
 
