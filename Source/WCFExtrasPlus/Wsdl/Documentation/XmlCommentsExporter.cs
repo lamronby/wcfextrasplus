@@ -133,6 +133,17 @@ namespace WCFExtrasPlus.Wsdl.Documentation
                         yield return obj;
                 }
             }
+
+            XmlSchemaSimpleTypeList flagEnumTypeList = (simpleType.Content as XmlSchemaSimpleTypeList);
+            if (flagEnumTypeList != null && flagEnumTypeList.ItemType != null)
+            {
+                XmlSchemaSimpleTypeRestriction flagEnumRestriction = (flagEnumTypeList.ItemType.Content as XmlSchemaSimpleTypeRestriction);
+                if (flagEnumRestriction != null)
+                {
+                    foreach (XmlSchemaObject obj in flagEnumRestriction.Facets)
+                        yield return obj;
+                }
+            }
         }
 
         private static IEnumerable<XmlSchemaObject> GetSubItems(XmlSchemaObject schemaObj)
