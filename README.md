@@ -1,3 +1,5 @@
+[![NuGet](https://img.shields.io/nuget/v/WCFExtrasPlus.svg)](https://www.nuget.org/packages/WCFExtrasPlus)
+
 # WCFExtrasPlus
 
 WCFExtrasPlus is a collection of useful WCF extensions:
