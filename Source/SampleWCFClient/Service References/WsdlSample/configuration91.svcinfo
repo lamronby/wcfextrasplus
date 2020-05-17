@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IWsdlSample1" contract="WsdlSample.IWsdlSample" bindingType="basicHttpBinding" address="http://127.0.0.1/Sample/WsdlSample.svc" bindingConfiguration="BasicHttpBinding_IWsdlSample1">
+    <endpoint name="BasicHttpBinding_IWsdlSample1" contract="WsdlSample.IWsdlSample" bindingType="basicHttpBinding" address="http://localhost/Sample/WsdlSample.svc" bindingConfiguration="BasicHttpBinding_IWsdlSample1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://127.0.0.1/Sample/WsdlSample.svc</serializedValue>
+          <serializedValue>http://localhost/Sample/WsdlSample.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

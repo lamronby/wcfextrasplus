@@ -21,7 +21,7 @@
     <MetadataSource Address="http://localhost/Sample/SoapHeadersSample.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SoapHeadersSample.wsdl" MetadataType="Wsdl" ID="c5e0b369-d35c-4ab5-b59e-55f4c91dfe58" SourceId="1" SourceUrl="http://127.0.0.1/Sample/SoapHeadersSample.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="SoapHeadersSample.wsdl" MetadataType="Wsdl" ID="c5e0b369-d35c-4ab5-b59e-55f4c91dfe58" SourceId="1" SourceUrl="http://localhost/Sample/SoapHeadersSample.svc?wsdl=wsdl0" />
     <MetadataFile FileName="SoapHeadersSample.disco" MetadataType="Disco" ID="73a71f64-ac33-4215-850e-7872d07c4225" SourceId="1" SourceUrl="http://insle0040309.peak8ddc.local/Sample/SoapHeadersSample.svc?disco" />
     <MetadataFile FileName="SoapHeadersSample1.wsdl" MetadataType="Wsdl" ID="54e2b644-5e20-4fcd-ae24-ac457083b86b" SourceId="1" SourceUrl="http://insle0040309.peak8ddc.local/Sample/SoapHeadersSample.svc?wsdl" />
   </Metadata>

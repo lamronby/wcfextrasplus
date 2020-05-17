@@ -401,7 +401,7 @@
   </wsdl:binding>
   <wsdl:service name="WsdlSample">
     <wsdl:port name="BasicHttpBinding_IWsdlSample" binding="tns:BasicHttpBinding_IWsdlSample">
-      <soap:address location="http://127.0.0.1/Sample/WsdlSample.svc" />
+      <soap:address location="http://localhost/Sample/WsdlSample.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

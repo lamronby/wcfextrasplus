@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SampleWCFClient</name>
+    </assembly>
+    <members>
+        <member name="P:SampleWCFClient.WsdlSample.DataContractSample.ErrorCodeField">
+            <summary>
+            An enum Field (Not a property)
+            </summary>
+        </member>
+        <member name="P:SampleWCFClient.WsdlSample.DataContractSample.ExtensionData1">
+            <summary>
+            A member with a name that collides with the ExtensionData member
+            inherited from IExtensibleDataObject
+            </summary>
+        </member>
+        <member name="P:SampleWCFClient.WsdlSample.DataContractSample.Member1">
+            <summary>
+            A simple string member
+            </summary>
+        </member>
+        <member name="P:SampleWCFClient.WsdlSample.DataContractSample.WeirdName">
+            <summary>
+            A member who's name was changed using the DataMember attribute.
+            Also note that the new member name has special chars.
+            This summary references <see cref="P:Member1">Member1</see>
+            </summary>
+        </member>
+        <member name="T:SampleWCFClient.WsdlSample.DataContractSample.DataContractSampleInner">
+            <summary>
+            An class declared as an inner
+            </summary>
+        </member>
+        <member name="P:SampleWCFClient.WsdlSample.DataContractSample.DataContractSampleInner.Member1">
+            <summary>
+            A member field of an inner class
+            </summary>
+        </member>
+        <member name="P:SampleWCFClient.WsdlSample.DataContractSample.DataContractSampleInner.Member2">
+            <summary>
+            This summary references <see cref="P:Member1">Member1</see>
+            </summary>
+        </member>
+        <member name="T:SampleWCFClient.WsdlSample.InheritedContract">
+            <summary>
+            A data contract that inherits from DataContractSample.
+            </summary>
+        </member>
+        <member name="P:SampleWCFClient.WsdlSample.InheritedContract.Property">
+            <summary>
+            Gets or sets the property.
+            </summary>
+            <value>The property.</value>
+        </member>
+        <member name="T:SampleWCFClient.WsdlSample.ErrorCodes">
+            <summary>
+            An enum marked with a DataContract attribute
+            </summary>
+        </member>
+        <member name="F:SampleWCFClient.WsdlSample.ErrorCodes.General">
+            <summary>
+            Unknown error has occoured
+            </summary>
+        </member>
+        <member name="F:SampleWCFClient.WsdlSample.ErrorCodes.FileNotFound">
+            <summary>
+            An enum member who's name was changed using the EnumMember attribute.
+            Also note that the new member name has special chars.
+            </summary>
+            <seealso cref="M:IWsdlSample.Operation2()" />
+        </member>
+        <member name="F:SampleWCFClient.WsdlSample.ErrorCodes.OutOfMemory">
+            <summary>
+            Out of memory see <see cref="M:IWsdlSample.Operation1" /> for more details
+            </summary>
+        </member>
+        <member name="T:SampleWCFClient.WsdlSample.Struct">
+            <summary>
+            Structs can also be documented
+            </summary>
+        </member>
+        <member name="P:SampleWCFClient.WsdlSample.Struct.str">
+            <summary>
+            And members of structs
+            </summary>
+        </member>
+        <member name="T:SampleWCFClient.WsdlSample.RegularEnum">
+            <summary>
+            This is a "regular" enum without a DataContract attribute.
+            </summary>
+        </member>
+        <member name="F:SampleWCFClient.WsdlSample.RegularEnum.FirstValue">
+            <summary>
+            First value documentation
+            </summary>
+            see <see cref="T:ErrorCodes" /> and <see cref="F:ErrorCodes.FileNotFound" />
+        </member>
+        <member name="T:SampleWCFClient.WsdlSample.IWsdlSample">
+            <summary>
+            This is a sample service contract that demonstrates how xml comments
+            can be placed anywhere in code are rendered to the result WSDL.
+            These comments will also be imported to the client generated proxy if the proxy configured correctly
+            </summary>
+        </member>
+        <member name="M:SampleWCFClient.WsdlSample.IWsdlSample.Operation1">
+            <summary>
+            This is a simple operation without input paramaters.
+            </summary>
+            <returns>The operations returns a string</returns>
+            <seealso cref="!:Unresolved.Reference" />
+        </member>
+        <member name="M:SampleWCFClient.WsdlSample.IWsdlSample.Operation2(SampleWCFClient.WsdlSample.InheritedContract,SampleWCFClient.WsdlSample.DataContractSample.DataContractSampleInner)">
+            <summary>
+            Receives 2 parameters, both are data contracts
+            </summary>
+            <param name="data">Regular DataContract parameter</param>
+            <param name="innerData">This parameter is from a type declared as an inner class inside a DataContract</param>
+        </member>
+        <member name="M:SampleWCFClient.WsdlSample.IWsdlSample.Operation3(System.Int32@,System.Nullable{SampleWCFClient.WsdlSample.Struct},System.Int64@)">
+            This text is placed outside of any tag. It will not be rendered when using the Portable format
+            <summary>
+            Operation 3 - This is a <b>test</b> for very long xml comments. The rest of this line is just garbage: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec magna odio, imperdiet in, facilisis vitae, congue vel, urna. Aliquam ullamcorper. Integer libero turpis, tempor quis, interdum ac, interdum sed, lorem. Nam ipsum erat, interdum sed, pellentesque sed, faucibus sed, risus. In commodo ipsum eget neque. Suspendisse ut nisl sit amet odio semper luctus. Maecenas sit amet nisl. Sed ac ligula eu nunc lacinia pulvinar. Phasellus auctor aliquam diam. Curabitur at nibh id felis mattis ornare. Quisque ac purus non odio aliquet condimentum. Curabitur gravida nisi a odio. In iaculis pede vitae dui. Nunc a mi. Curabitur elementum ligula in odio. Nunc accumsan egestas odio
+            </summary>
+            <remarks>
+            This is a section of remarks.
+            This information will go into the HTML documentation
+            Remarks are not rendered when using Portable
+            </remarks>
+            seealso references are not renderd when using Portable
+            <param name="str">a Nullable parameter</param>
+            <param name="param1">this is
+            a
+            multiline
+            commnet
+            for param2</param>
+            <param name="param2">a parameter passed by reference</param>
+            <returns>this method returns a string</returns>
+            <custom>This is a custom XML comment tag</custom>
+        </member>
+        <member name="M:SampleWCFClient.WsdlSample.IWsdlSample.Operation4(SampleWCFClient.WsdlSample.RegularEnum)">
+            <summary>
+            This operation uses an enum as a parameter.
+            </summary>
+            <param name="param1">A "regular" enum. This is an enum not marked with the [DataContract] attribure</param>
+            <seealso cref="M:Operation3()" />
+        </member>
+    </members>
+</doc>
