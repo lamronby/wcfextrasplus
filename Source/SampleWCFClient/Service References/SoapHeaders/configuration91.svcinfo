@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_ISoapHeadersSample" contract="SoapHeaders.ISoapHeadersSample" bindingType="basicHttpBinding" address="http://127.0.0.1/Sample/SoapHeadersSample.svc" bindingConfiguration="BasicHttpBinding_ISoapHeadersSample">
+    <endpoint name="BasicHttpBinding_ISoapHeadersSample" contract="SoapHeaders.ISoapHeadersSample" bindingType="basicHttpBinding" address="http://localhost/Sample/SoapHeadersSample.svc" bindingConfiguration="BasicHttpBinding_ISoapHeadersSample">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://127.0.0.1/Sample/SoapHeadersSample.svc</serializedValue>
+          <serializedValue>http://localhost/Sample/SoapHeadersSample.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
