@@ -24,7 +24,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
-    <DefineConstants>TRACE;DEBUG;NET45</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,11 +36,13 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>WCFExtrasPlus.snk</AssemblyOriginatorKeyFile>
     <Authors>Chris Jansen</Authors>
+    <Copyright>Copyright © 2008-2020 Eyal Post, Chris Jansen</Copyright>
+    <Description>WCFExtrasPlus is a collection of useful WCF extensions including SOAP Header support, WSDL flattening and documentation, and more.</Description>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
     <PackageProjectUrl>https://www.nuget.org/packages/WCFExtrasPlus/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/lamronby/wcfextrasplus</RepositoryUrl>
+    <RepositoryUrl>https://github.com/lamronby/wcfextrasplus.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Added XML comment support for Flag enumerations.</PackageReleaseNotes>    
+    <PackageReleaseNotes>Added XML comment support for Flag enumerations. Removed support for net3.5.</PackageReleaseNotes>
     <PackageTags>wcf wcfextras soap wsdl</PackageTags>
   </PropertyGroup>
   <ItemGroup>
