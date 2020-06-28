@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Web References\localhost\SoapHeadersSample0.wsdl" />
