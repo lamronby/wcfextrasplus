@@ -1,4 +1,0 @@
-Fixed an index out-of-bounds issue when parsing CREFs in XML comments.
-Converted solution and projects to VS 2013.
-In NuGet package, added support for multiple .NET framework versions.
-Added support for .NET 4.5 when using task-based operations in WCF contract.

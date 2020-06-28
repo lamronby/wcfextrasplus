@@ -50,7 +50,7 @@
     <PackageProjectUrl>https://www.nuget.org/packages/WCFExtrasPlus/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lamronby/wcfextrasplus.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Added XML comment support for Flag enumerations. Removed support for net3.5.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for Source Link</PackageReleaseNotes>
     <PackageTags>wcf wcfextras soap wsdl</PackageTags>
   </PropertyGroup>
   <ItemGroup>
