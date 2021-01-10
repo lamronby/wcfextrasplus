@@ -7,6 +7,7 @@ using System.Reflection;
 using System.IO;
 using System.Text.RegularExpressions;
 using WCFExtrasPlus.Wsdl.Documentation;
+using log4net;
 
 namespace WCFExtrasPlus.Utils
 {
@@ -19,11 +20,16 @@ namespace WCFExtrasPlus.Utils
 
     public static class XmlCommentsUtils
     {
+        // Define a static logger variable so that it references the Logger instance named after this class.
+        private static readonly ILog log = LogManager.GetLogger(nameof(XmlCommentsUtils));
+
         static Dictionary<string, XmlDocument> xmlDocCache = new Dictionary<string, XmlDocument>();
         static Dictionary<MemberInfo, string> memberCommentCache = new Dictionary<MemberInfo, string>();
 
         private static XmlDocument TryLoadFromLocation(string fileName)
         {
+            log.DebugFormat("{0}: {1}",nameof(TryLoadFromLocation),fileName);
+
             XmlDocument doc = null;
             if (xmlDocCache.TryGetValue(fileName, out doc))
                 return doc;
@@ -40,6 +46,8 @@ namespace WCFExtrasPlus.Utils
 
         private static string GetFormattedComment(MemberInfo member, XmlNode commentNode, XmlCommentFormat format)
         {
+            log.Debug(nameof(GetFormattedComment));
+
             string result;
             if (format == XmlCommentFormat.Default)
             {
@@ -277,6 +285,8 @@ namespace WCFExtrasPlus.Utils
 
         public static void ClearCache()
         {
+            log.Debug(nameof(ClearCache));
+
             xmlDocCache.Clear();
             memberCommentCache.Clear();
         }
@@ -309,6 +319,8 @@ namespace WCFExtrasPlus.Utils
 
         public static string GetFormattedComment(XmlDocument commentsDoc, MemberInfo member, XmlCommentFormat format)
         {
+            log.DebugFormat("{0}: {1}", nameof(GetFormattedComment), member.Name);
+
             string result;
             if (memberCommentCache.TryGetValue(member, out result))
                 return result;
