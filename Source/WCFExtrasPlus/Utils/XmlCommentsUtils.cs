@@ -7,6 +7,7 @@ using System.Reflection;
 using System.IO;
 using System.Text.RegularExpressions;
 using WCFExtrasPlus.Wsdl.Documentation;
+using System.Collections.Concurrent;
 
 namespace WCFExtrasPlus.Utils
 {
@@ -19,8 +20,8 @@ namespace WCFExtrasPlus.Utils
 
     public static class XmlCommentsUtils
     {
-        static Dictionary<string, XmlDocument> xmlDocCache = new Dictionary<string, XmlDocument>();
-        static Dictionary<MemberInfo, string> memberCommentCache = new Dictionary<MemberInfo, string>();
+        private static ConcurrentDictionary<string, XmlDocument> xmlDocCache = new ConcurrentDictionary<string, XmlDocument>();
+        private static ConcurrentDictionary<MemberInfo, string> memberCommentCache = new ConcurrentDictionary<MemberInfo, string>();
 
         private static XmlDocument TryLoadFromLocation(string fileName)
         {
