@@ -46,12 +46,12 @@
     <Authors>Chris Jansen</Authors>
     <Copyright>Copyright © 2008-2020 Eyal Post, Chris Jansen</Copyright>
     <Description>WCFExtrasPlus is a collection of useful WCF extensions including SOAP Header support, WSDL flattening and documentation, and more.</Description>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
     <PackageProjectUrl>https://www.nuget.org/packages/WCFExtrasPlus/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lamronby/wcfextrasplus.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Added support for Source Link</PackageReleaseNotes>
+    <PackageReleaseNotes>Addressed potential concurrency issues in IIS by converting WSDL generation-related classes to use ConcurrentDictionary. Updated package license metadata.</PackageReleaseNotes>
     <PackageTags>wcf wcfextras soap wsdl</PackageTags>
+    <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.configuration" />
@@ -60,10 +60,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\license.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
     <None Include="WCFExtrasPlus.snk" />
   </ItemGroup>
 </Project>
