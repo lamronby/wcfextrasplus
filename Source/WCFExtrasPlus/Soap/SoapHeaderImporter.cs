@@ -75,7 +75,7 @@ namespace WCFExtrasPlus.Soap
         {
         }
 
-        Dictionary<MessageHeaderDescription, SoapHeaderDirection> headers;
+        private readonly Dictionary<MessageHeaderDescription, SoapHeaderDirection> headers;
 
         public SoapHeaderOpExtension(Dictionary<MessageHeaderDescription, SoapHeaderDirection> headers)
         {
@@ -117,7 +117,7 @@ namespace WCFExtrasPlus.Soap
 
     class SoapHeaderSvcExtension : IContractBehavior, IServiceContractGenerationExtension
     {
-        Dictionary<string, MessageHeaderDescription> clientHeaders;
+        private readonly Dictionary<string, MessageHeaderDescription> clientHeaders;
 
         public SoapHeaderSvcExtension(Dictionary<string, MessageHeaderDescription> headers)
         {

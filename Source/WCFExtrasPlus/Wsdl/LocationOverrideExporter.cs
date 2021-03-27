@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
@@ -12,7 +12,7 @@ namespace WCFExtrasPlus.Wsdl
     class LocationOverrideExporter
     {
         Uri location;
-        Dictionary<object, string> queryFromDoc = new Dictionary<object, string>();
+        private ConcurrentDictionary<object, string> queryFromDoc = new ConcurrentDictionary<object, string>();
 
         private LocationOverrideExporter(Uri location)
         {
@@ -55,13 +55,13 @@ namespace WCFExtrasPlus.Wsdl
                 {
                     key = key + "=wsdl" + num++;
                 }
-                queryFromDoc.Add(description2, key);
+                queryFromDoc.TryAdd(description2, key); // assume failure means another thread performed the Add.
             }
             int num2 = 0;
             foreach (XmlSchema schema in xsds.Schemas())
             {
                 string str2 = "xsd=xsd" + num2++;
-                queryFromDoc.Add(schema, str2);
+                queryFromDoc.TryAdd(schema, str2); // assume failure means another thread performed the Add.
             }
         }
 
