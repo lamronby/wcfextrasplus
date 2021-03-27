@@ -23,6 +23,7 @@
     <TargetFrameworks>net40;net45</TargetFrameworks>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>    
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
@@ -44,7 +45,7 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>WCFExtrasPlus.snk</AssemblyOriginatorKeyFile>
     <Authors>Chris Jansen</Authors>
-    <Copyright>Copyright © 2008-2020 Eyal Post, Chris Jansen</Copyright>
+    <Copyright>Copyright © 2008-2021 Eyal Post, Chris Jansen</Copyright>
     <Description>WCFExtrasPlus is a collection of useful WCF extensions including SOAP Header support, WSDL flattening and documentation, and more.</Description>
     <PackageProjectUrl>https://www.nuget.org/packages/WCFExtrasPlus/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lamronby/wcfextrasplus.git</RepositoryUrl>
