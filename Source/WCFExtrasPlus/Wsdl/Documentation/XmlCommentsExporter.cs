@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel.Description;
 using System.Web.Services.Description;
 using System.Xml;
@@ -12,6 +13,8 @@ namespace WCFExtrasPlus.Wsdl.Documentation
 {
     class XmlCommentsExporter
     {
+        public static XmlDocument GeneratedDoc { get; set; }
+
         private static void InitXsdDataContractExporter(WsdlExporter exporter, XmlCommentFormat format)
         {
             object dataContractExporter;
@@ -112,6 +115,46 @@ namespace WCFExtrasPlus.Wsdl.Documentation
             }
         }
 
+        private static void ConvertObjectAnnotationForXmlSerializerFormat(XmlSchemaObject schemaObj)
+        {
+            XmlSchemaAnnotated annObj = schemaObj as XmlSchemaAnnotated;
+
+            object obj = annObj;
+
+            PropertyInfo pi = obj?.GetType().GetProperty("Name");
+
+            var name = (string)pi?.GetValue(obj, null);
+
+            XmlNodeList elemList = GeneratedDoc.GetElementsByTagName("member");
+
+            string commentValue = string.Empty;
+
+            foreach (XmlNode xn in elemList)
+            {
+                if (xn.Attributes != null && xn.Attributes[0].InnerText.EndsWith(name ?? string.Empty))
+                {
+                    commentValue = xn.InnerText;
+                }
+
+            }
+            if (name != null && !string.IsNullOrEmpty(commentValue))
+            {
+                annObj.Annotation = new XmlSchemaAnnotation();
+
+                if (annObj.Annotation != null)
+                {
+                    XmlSchemaDocumentation comment = CreateDocumentationItem(commentValue);
+
+                    annObj.Annotation.Items.Add(comment);
+                }
+            }
+
+            foreach (XmlSchemaObject subObj in GetSubItems(schemaObj))
+            {
+                ConvertObjectAnnotationForXmlSerializerFormat(subObj);
+            }
+        }
+
         private static XmlSchemaDocumentation CreateDocumentationItem(string text)
         {
             XmlDocument doc = new XmlDocument();
@@ -164,11 +207,31 @@ namespace WCFExtrasPlus.Wsdl.Documentation
 
         internal static void ExportEndpoint(WsdlExporter exporter, XmlCommentFormat format)
         {
-            foreach (XmlSchema schema in exporter.GeneratedXmlSchemas.Schemas())
+            // xmlSerializerFormatState is deciding whether the interface is using XmlSerializerFormat attribute or not. 
+            var xmlSerializerFormatState = exporter.State.Keys.FirstOrDefault(formatObj
+                => formatObj.ToString().Contains("System.ServiceModel.Description.XmlSerializerOperationBehavior"));
+
+            // If it is not using XmlSerializerFormat, then the xml comments would appear according to annotation. 
+            if (xmlSerializerFormatState == null)
             {
-                foreach (XmlSchemaObject schemaObj in schema.Items)
+                foreach (XmlSchema schema in exporter.GeneratedXmlSchemas.Schemas())
                 {
-                    ConvertObjectAnnotation(schemaObj);
+                    foreach (XmlSchemaObject schemaObj in schema.Items)
+                    {
+                        ConvertObjectAnnotation(schemaObj);
+                    }
+                }
+            }
+            // If it is using XmlSerializerFormat, then annotations have been added manually  
+            // in this method comparing with the generated xml file.
+            else
+            {
+                foreach (XmlSchema schema in exporter.GeneratedXmlSchemas.Schemas())
+                {
+                    foreach (XmlSchemaObject schemaObj in schema.Items)
+                    {
+                        ConvertObjectAnnotationForXmlSerializerFormat(schemaObj);
+                    }
                 }
             }
             XmlCommentsUtils.ClearCache();
@@ -181,6 +244,8 @@ namespace WCFExtrasPlus.Wsdl.Documentation
             XmlDocument commentsDoc = XmlCommentsUtils.LoadXmlComments(context.Contract.ContractType);
             if (commentsDoc == null)
                 return;
+
+            GeneratedDoc = commentsDoc;
 
             string comment = XmlCommentsUtils.GetFormattedComment(commentsDoc, context.Contract.ContractType, format);
             if (comment != null)
